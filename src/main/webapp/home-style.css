@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:500>');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-size: cover;
+    background: #e9e9e9 no-repeat center;
+}
+
+a, button {
+    font-family: "Prompt", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f6f6f6;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18%;
+    padding: 20px 100px;
+    background-color: #1877f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.search {
+    --padding: 14px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: #f5c33b;
+    width: 500px;
+}
+
+.search-input {
+    font-family: "Prompt", sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}
+
+.search-input::placeholder{
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta a {
+    transition: all 0.3s ease 0s;
+}
+
+.cta a:hover {
+    color: #f5c33b
+}
+
+button {
+    padding: 9px 25px;
+    background-color: rgba(245, 195, 59, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(245, 195, 59, 0.8);
+}
+
+
+
