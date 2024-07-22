@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WishlistDAO {
 
@@ -34,6 +36,28 @@ public class WishlistDAO {
             ps.setLong(2, codice);
             ps.executeQuery();
         } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Articolo> getWishlist(long idUtente){
+        String query = "SELECT A_Codice_A_Barre FROM Wishlist WHERE U_ID_Utente = ?";
+        List<Articolo> wishlist = new ArrayList<>();
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setLong(1, idUtente);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                Articolo articolo = null;
+                ArticoloDAO getArticolo = null;
+
+                articolo = getArticolo.getArticoloById(rs.getLong(1));
+                wishlist.add(articolo);
+            }
+            return wishlist;
+        } catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
