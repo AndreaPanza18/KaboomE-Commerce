@@ -29,7 +29,7 @@ public class CreateAccount extends HttpServlet {
         user.setPassword(request.getParameter("password"));
 
         if(newUser.createAccount(user)){
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(true);
             session.setAttribute("User", user);
             RequestDispatcher dispatcher = request.getRequestDispatcher("home-page.jsp");
             dispatcher.forward(request, response);

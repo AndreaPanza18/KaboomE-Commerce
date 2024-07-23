@@ -32,11 +32,11 @@ public class ArticoloDAO {
     }
 
     public List<Articolo> getArticoloByCategories(String categoria){
-        String fumetti = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, A_ID_Autore FROM Articolo " +
+        String fumetti = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, A_ID_Autore, Url_immagine FROM Articolo " +
                             "WHERE A_ID_Autore IS NOT NULL AND Personaggio IS NULL AND Materiale IS NULL";
-        String carte = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Materiale FROM Articolo " +
+        String carte = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Materiale, Url_immagine FROM Articolo " +
                             "WHERE A_ID_Autore IS NULL AND Personaggio IS NULL AND Materiale IS NOT NULL";
-        String actionFigure = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio FROM Articolo " +
+        String actionFigure = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio, Url_immagine FROM Articolo " +
                                 "WHERE A_ID_Autore IS NULL AND Personaggio IS NOT NULL AND Materiale IS NULL";
         List<Articolo> articoli = new ArrayList<>();
 
@@ -52,6 +52,7 @@ public class ArticoloDAO {
                     articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
                     articolo.setDescrizione(rs.getString("Descrizione"));
                     articolo.setId_Autore(rs.getLong("A_ID_Autore"));
+                    articolo.setUrlImmagine(rs.getString("Url_immagine"));
                     articoli.add(articolo);
                 }
                 return articoli;
@@ -66,6 +67,7 @@ public class ArticoloDAO {
                     articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
                     articolo.setDescrizione(rs.getString("Descrizione"));
                     articolo.setMateriale(rs.getString("Materiale"));
+                    articolo.setUrlImmagine(rs.getString("Url_immagine"));
                     articoli.add(articolo);
                 }
                 return articoli;
@@ -80,6 +82,7 @@ public class ArticoloDAO {
                     articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
                     articolo.setDescrizione(rs.getString("Descrizione"));
                     articolo.setPersonaggio(rs.getString("Personaggio"));
+                    articolo.setUrlImmagine(rs.getString("Url_immagine"));
                     articoli.add(articolo);
                 }
                 return articoli;
@@ -87,6 +90,33 @@ public class ArticoloDAO {
                 return null;
             }
         } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Articolo> getLastdrop(){
+        String query = "SELECT * FROM Articolo ORDER BY DDU DESC LIMIT 10";
+        List<Articolo> articoli = new ArrayList<>();
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Articolo articolo = new Articolo();
+                articolo.setCodice(rs.getLong("Codice_A_Barre"));
+                articolo.setNome(rs.getString("Nome"));
+                articolo.setPrezzo(rs.getDouble("Prezzo"));
+                articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
+                articolo.setDescrizione(rs.getString("Descrizione"));
+                articolo.setPersonaggio(rs.getString("Personaggio"));
+                articolo.setMateriale(rs.getString("Materiale"));
+                articolo.setId_Autore(rs.getLong("A_ID_Autore"));
+                articolo.setUrlImmagine(rs.getString("Url_immagine"));
+                articoli.add(articolo);
+            }
+            return articoli;
+        } catch(SQLException e){
             throw new RuntimeException(e);
         }
     }

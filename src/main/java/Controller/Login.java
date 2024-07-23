@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
             dispatcher.forward(request, response);
         } else {
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(true);
             session.setAttribute("User", utente);
             session.setAttribute("Permission", utente.getPermission());
 

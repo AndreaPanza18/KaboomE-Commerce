@@ -12,6 +12,7 @@ public class Articolo {
     private String materiale;
     private long id_Autore;
     private int quantita;
+    private String urlImmagine;
 
     public void setCodice(long codice) {
         this.codice = codice;
@@ -49,6 +50,10 @@ public class Articolo {
         this.quantita = quantita;
     }
 
+    public void setUrlImmagine(String urlImmagine) {
+        this.urlImmagine = urlImmagine;
+    }
+
     public long getCodice() {
         return codice;
     }
@@ -83,5 +88,9 @@ public class Articolo {
 
     public int getQuantita() {
         return quantita;
+    }
+
+    public String getUrlImmagine() {
+        return urlImmagine;
     }
 }

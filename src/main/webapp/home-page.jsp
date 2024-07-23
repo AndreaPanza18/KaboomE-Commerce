@@ -1,3 +1,6 @@
+<%@ page import="Model.ArticoloDAO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Model.Articolo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -24,9 +27,16 @@
         <a href="#">
             <button>Carrello</button>
         </a>
-        <a href="login.jsp">
-            <button>Login</button>
-        </a>
+        <c:if test="${empty User}">
+            <a href="login.jsp">
+                <button>Login</button>
+            </a>
+        </c:if>
+        <c:if test="${not empty User}">
+            <a href="profile-page.jsp">
+                <button>Profilo</button>
+            </a>
+        </c:if>
     </div>
 </header>
 <main>
@@ -38,15 +48,26 @@
     <div class="ultime-uscite">
         <h2>Ultime Uscite</h2>
         <div class="lista-articoli">
-            <c:forEach var="articolo" items="${ultimeUscite}">
+            <%
+                ArticoloDAO getArticolo = new ArticoloDAO();
+                List<Articolo> articoli = getArticolo.getLastdrop();
+                session.setAttribute("ultimeUscite", articoli);
+            %>
+            <c:forEach items="${ultimeUscite}" var="articolo">
                 <div class="item">
-                    <a href="prodotto.jsp?codice=${articolo.codiceABarre}">
-                        <img src="${articolo.immagineUrl}" alt="${articolo.nome}" class="item-img">
+                    <a href="product-page.jsp?codice=${articolo.codice}">
+                        <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
                     </a>
                     <h3>${articolo.nome}</h3>
                     <p>${articolo.prezzo} €</p>
-                    <button class="btn-add-cart">Aggiungi al Carrello</button>
-                    <button class="btn-add-wishlist">Aggiungi alla Wishlist</button>
+                    <form action="AddToCart" method="post" class="item-form">
+                        <input type="hidden", name="codice", value="${articolo.codice}">
+                        <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
+                    </form>
+                    <form action="AddToWishlist" method="post" class="item-form">
+                        <input type="hidden", name="codice", value=""${articolo.codice}>
+                        <button type="submit", class="btn-add-wishlist">Aggiungi alla wishlist</button>
+                    </form>
                 </div>
             </c:forEach>
         </div>
