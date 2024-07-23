@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArticoloDAO {
     public Articolo getArticoloById(long codice){
@@ -28,4 +30,68 @@ public class ArticoloDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Articolo> getArticoloByCategories(String categoria){
+        String fumetti = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, A_ID_Autore FROM Articolo" +
+                            "WHERE A_ID_Autore IS NOT NULL AND Personaggio IS NULL AND Materiale IS NULL";
+        String carte = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Materiale FROM Articolo" +
+                            "WHERE A_ID_Autore IS NULL AND Personaggio IS NULL AND Materiale IS NOT NULL";
+        String actionFigure = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio FROM Articolo" +
+                                "WHERE A_ID_Autore IS NULL AND Personaggio IS NOT NULL AND Materiale IS NULL";
+        List<Articolo> articoli = new ArrayList<>();
+
+        try(Connection con = ConPool.getConnection()){
+            if(categoria.equals("fumetti")){
+                PreparedStatement psFumetti = con.prepareStatement(fumetti);
+                ResultSet rs = psFumetti.executeQuery();
+                while(rs.next()){
+                    Articolo articolo = new Articolo();
+                    articolo.setCodice(rs.getLong("Codice_A_Barre"));
+                    articolo.setNome(rs.getString("Nome"));
+                    articolo.setPrezzo(rs.getDouble("Prezzo"));
+                    articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
+                    articolo.setDescrizione(rs.getString("Descrizione"));
+                    articolo.setId_Autore(rs.getLong("A_ID_Autore"));
+                    articoli.add(articolo);
+                }
+                return articoli;
+            } else if (categoria.equals("carte")) {
+                PreparedStatement psCarte = con.prepareStatement(carte);
+                ResultSet rs = psCarte.executeQuery();
+                while(rs.next()){
+                    Articolo articolo = new Articolo();
+                    articolo.setCodice(rs.getLong("Codice_A_Barre"));
+                    articolo.setNome(rs.getString("Nome"));
+                    articolo.setPrezzo(rs.getDouble("Prezzo"));
+                    articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
+                    articolo.setDescrizione(rs.getString("Descrizione"));
+                    articolo.setMateriale(rs.getString("Materiale"));
+                    articoli.add(articolo);
+                }
+                return articoli;
+            } else if (categoria.equals("action-figure")) {
+                PreparedStatement psActionFigure = con.prepareStatement(actionFigure);
+                ResultSet rs = psActionFigure.executeQuery();
+                while(rs.next()){
+                    Articolo articolo = new Articolo();
+                    articolo.setCodice(rs.getLong("Codice_A_Barre"));
+                    articolo.setNome(rs.getString("Nome"));
+                    articolo.setPrezzo(rs.getDouble("Prezzo"));
+                    articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
+                    articolo.setDescrizione(rs.getString("Descrizione"));
+                    articolo.setPersonaggio(rs.getString("Personaggio"));
+                    articoli.add(articolo);
+                }
+                return articoli;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }
+
+
+
+
