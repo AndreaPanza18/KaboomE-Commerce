@@ -51,12 +51,10 @@
         <div class="input-box">
             <label>Email</label>
             <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
-        </div>
-        <div class="input-box">
             <label>Password</label>
             <input type="password" class="form-control" name="password" required>
         </div>
-        <input type="submit" value="Login" class="btn">
+        <input type="submit" value="LOGIN" class="btn">
     </form>
     <div class="login-register">
         <p>Non hai ancora un account?</p> <a href="create-account.jsp" class="refister-link"> Registrati</a>

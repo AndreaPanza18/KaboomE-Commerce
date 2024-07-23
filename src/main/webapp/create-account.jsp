@@ -28,11 +28,6 @@
                 <button>Login</button>
             </a>
         </c:if>
-        <c:if test="${not empty User}">
-            <a href="profile-page.jsp">
-                <button>Profilo</button>
-            </a>
-        </c:if>
     </div>
 </header>
 <div class="categorie">
@@ -49,12 +44,11 @@
             <label>Cognome</label>
             <input type="text" class="form-control" name="cognome" required>
             <label>Email</label>
-            <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required
-                   autofocus>
+            <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
             <label>Password</label>
             <input type="password" class="form-control" name="password" required>
         </div>
-        <input type="submit" value="Invia" class="btn">
+        <input type="submit" value="INVIA" class="btn">
     </form>
 </div>
 </body>
