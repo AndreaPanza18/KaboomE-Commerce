@@ -22,7 +22,7 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        User utente = null;
+        User utente;
         UserDAO check = new UserDAO();
         utente = check.loginUser(email, password);
 

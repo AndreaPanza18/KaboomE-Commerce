@@ -1,7 +1,6 @@
 package Model;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +8,9 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public void createAccount(User user){
+    public boolean createAccount(User user){
         String hashedPassword = hashPassword(user.getPassword());
-        String query = "INSERT INTO Utente(Nome, Cognome, Email, Password, Admi_Permission) VALUES(?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Utente(Nome, Cognome, Email, Password, Admin_Permission) VALUES(?, ?, ?, ?, ?)";
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, user.getNome());
@@ -19,7 +18,8 @@ public class UserDAO {
             ps.setString(3, user.getEmail());
             ps.setString(4, hashedPassword);
             ps.setBoolean(5, false);
-            ps.executeQuery();
+            ps.executeUpdate();
+            return true;
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -30,16 +30,21 @@ public class UserDAO {
 
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-            if(checkpassword(password, rs.getString("Password"))){
-                User user = null;
-                user.setId_Utente(rs.getLong("ID_Utente"));
-                user.setNome(rs.getString("Nome"));
-                user.setCognome(rs.getString("Cognome"));
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setPermission(rs.getBoolean("Admin_Permission"));
-                return user;
+            if(rs.next()) {
+                if (checkpassword(password, rs.getString("Password"))) {
+                    User user = new User();
+                    user.setId_Utente(rs.getLong("ID_Utente"));
+                    user.setNome(rs.getString("Nome"));
+                    user.setCognome(rs.getString("Cognome"));
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    user.setPermission(rs.getBoolean("Admin_Permission"));
+                    return user;
+                } else {
+                    return null;
+                }
             } else {
                 return null;
             }
