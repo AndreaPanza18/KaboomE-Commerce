@@ -26,9 +26,16 @@
         <a href="#">
             <button>Carrello</button>
         </a>
-        <a href="login.jsp">
-            <button>Login</button>
-        </a>
+        <c:if test="${empty User}">
+            <a href="login.jsp">
+                <button>Login</button>
+            </a>
+        </c:if>
+        <c:if test="${not empty User}">
+            <a href="profile-page.jsp">
+                <button>Profilo</button>
+            </a>
+        </c:if>
     </div>
 </header>
 <div class="categorie">
