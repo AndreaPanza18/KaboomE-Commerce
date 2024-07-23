@@ -42,7 +42,7 @@ header {
 
 .search {
     --padding: 10px;
-    width: 400px;
+    width: 500px;
     display: flex;
     align-items: center;
     padding: var(--padding);
@@ -53,7 +53,7 @@ header {
 
 .search-input {
     font-family: "Prompt", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     color: #FFFFFF;
     margin-left: var(--padding);
     outline: none;
@@ -68,7 +68,7 @@ header {
 
 .cta {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .cta a {
@@ -90,4 +90,12 @@ button {
 
 button:hover {
     background-color: rgba(245, 195, 59, 0.8);
+}
+
+button.cart-button {
+    margin-right: 5px;
+}
+
+button.login-button {
+    margin-left: 5px;
 }

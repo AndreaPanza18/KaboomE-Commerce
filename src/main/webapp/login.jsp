@@ -18,15 +18,14 @@
             <input class="search-input" type="search" placeholder="Cerca...">
         </div>
     </form>
-    <a class="cta" href="#">
-        <button>Carrello</button>
-    </a>
-    <c:if test="${empty User}">
-        <a class="cta" href="login.jsp"><button>Login</button></a>
-    </c:if>
-    <c:if test="${not empty User}">
-        <a class="cta" href="#"><button>Profilo</button></a>
-    </c:if>
+    <div class="cta">
+        <a href="#">
+            <button>Carrello</button>
+        </a>
+        <a href="login.jsp">
+            <button>Login</button>
+        </a>
+    </div>
 </header>
 <div class="categorie">
     <a href="articoli.jsp?categoria=fumetti">Fumetti</a>

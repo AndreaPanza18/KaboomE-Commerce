@@ -19,12 +19,14 @@
             <input class="search-input" type="search" placeholder="Cerca...">
         </div>
     </form>
-    <a class="cta" href="#">
-        <button>Carrello</button>
-    </a>
-    <a class="cta" href="login.jsp">
-        <button>Login</button>
-    </a>
+    <div class="cta">
+        <a href="#">
+            <button>Carrello</button>
+        </a>
+        <a href="login.jsp">
+            <button>Login</button>
+        </a>
+    </div>
 </header>
 <main>
     <div class="categorie">
