@@ -61,7 +61,7 @@
                         <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
                     </a>
                     <h3>${articolo.nome}</h3>
-                    <p>${articolo.prezzo} €</p>
+                    <p>${articolo.prezzo}0 €</p>
                     <form action="AddToCart" method="post" class="item-form">
                         <input type="hidden", name="codice", value="${articolo.codice}">
                         <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
