@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
-    <link rel="stylesheet" href="CSS/categoris-style.css">
+    <link rel="stylesheet" href="CSS/categories-style.css">
     <link rel="stylesheet" href="CSS/homepage-style.css">
 </head>
 <body>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreateAccount</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
-    <link rel="stylesheet" href="CSS/categoris-style.css">
+    <link rel="stylesheet" href="CSS/categories-style.css">
     <link rel="stylesheet" href="CSS/create-style.css">
 </head>
 <body>
