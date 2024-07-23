@@ -27,10 +27,10 @@
         </a>
     </div>
 </header>
-<div class="categorie">
-    <a href="articoli.jsp?categoria=fumetti">Fumetti</a>
-    <a href="articoli.jsp?categoria=carte">Carte</a>
-    <a href="articoli.jsp?categoria=action-figure">Action Figure</a>
+<<div class="categorie">
+    <a href="#">Fumetti</a>
+    <a href="#">Carte</a>
+    <a href="#">Action Figure</a>
 </div>
 <div class="container">
     <c:if test="${not empty loginError}">

@@ -29,22 +29,23 @@
     </div>
 </header>
 <div class="categorie">
-    <a href="articoli.jsp?categoria=fumetti">Fumetti</a>
-    <a href="articoli.jsp?categoria=carte">Carte</a>
-    <a href="articoli.jsp?categoria=action-figure">Action Figure</a>
+    <a href="#">Fumetti</a>
+    <a href="#">Carte</a>
+    <a href="#">Action Figure</a>
 </div>
 <div class="container">
     <form action="CreateAccount" method="post">
         <h1>Registrati</h1>
         <div class="input-box">
-          <label>Nome</label>
-          <input type="text" class="form-control" name="nome" required>
-          <label>Cognome</label>
-          <input type="text" class="form-control" name="cognome" required>
-          <label>Email</label>
-          <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
-          <label>Password</label>
-          <input type="password" class="form-control" name="password" required>
+            <label>Nome</label>
+            <input type="text" class="form-control" name="nome" required>
+            <label>Cognome</label>
+            <input type="text" class="form-control" name="cognome" required>
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required
+                   autofocus>
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" required>
         </div>
         <input type="submit" value="Invia" class="btn">
     </form>
