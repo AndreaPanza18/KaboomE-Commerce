@@ -32,11 +32,11 @@ public class ArticoloDAO {
     }
 
     public List<Articolo> getArticoloByCategories(String categoria){
-        String fumetti = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, A_ID_Autore FROM Articolo" +
+        String fumetti = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, A_ID_Autore FROM Articolo " +
                             "WHERE A_ID_Autore IS NOT NULL AND Personaggio IS NULL AND Materiale IS NULL";
-        String carte = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Materiale FROM Articolo" +
+        String carte = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Materiale FROM Articolo " +
                             "WHERE A_ID_Autore IS NULL AND Personaggio IS NULL AND Materiale IS NOT NULL";
-        String actionFigure = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio FROM Articolo" +
+        String actionFigure = "SELECT Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio FROM Articolo " +
                                 "WHERE A_ID_Autore IS NULL AND Personaggio IS NOT NULL AND Materiale IS NULL";
         List<Articolo> articoli = new ArrayList<>();
 

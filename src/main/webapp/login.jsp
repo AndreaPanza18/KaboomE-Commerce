@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
+    <link rel="stylesheet" href="CSS/categoris-style.css">
     <link rel="stylesheet" href="CSS/login-style.css">
 </head>
 <body>
@@ -27,6 +28,11 @@
         <a class="cta" href="#"><button>Profilo</button></a>
     </c:if>
 </header>
+<div class="categorie">
+    <a href="articoli.jsp?categoria=fumetti">Fumetti</a>
+    <a href="articoli.jsp?categoria=carte">Carte</a>
+    <a href="articoli.jsp?categoria=action-figure">Action Figure</a>
+</div>
 <div class="container">
     <c:if test="${not empty loginError}">
         <div class="error-message">

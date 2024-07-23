@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articoli</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
+    <link rel="stylesheet" href="CSS/categoris-style.css">
     <link rel="stylesheet" href="CSS/articoli-style.css">
 </head>
 <body>
@@ -30,6 +31,11 @@
     </a>
 </header>
 <main>
+    <div class="categorie">
+        <a href="articoli.jsp?categoria=fumetti">Fumetti</a>
+        <a href="articoli.jsp?categoria=carte">Carte</a>
+        <a href="articoli.jsp?categoria=action-figure">Action Figure</a>
+    </div>
     <%
         String categoria = request.getParameter("categoria");
         ArticoloDAO getArticoli = new ArticoloDAO();
