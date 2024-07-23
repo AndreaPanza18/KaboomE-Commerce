@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articoli</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
-    <link rel="stylesheet" href="CSS/articoli-style.css">
+    <link rel="stylesheet" href="CSS/categories-style.css">
 </head>
 <body>
 <header>
@@ -22,13 +22,20 @@
             <input class="search-input" type="search" placeholder="Cerca...">
         </div>
     </form>
-    <a class="cta" href="#">
-        <button>Carrello</button>
-    </a>
-    <a class="cta" href="login.jsp">
-        <button>Login</button>
-    </a>
+    <div class="cta">
+        <a href="#">
+            <button>Carrello</button>
+        </a>
+        <a href="login.jsp">
+            <button>Login</button>
+        </a>
+    </div>
 </header>
+<div class="categorie">
+    <a href="articoli-categoria.jsp?categoria=fumetti">Fumetti</a>
+    <a href="articoli-categoria.jsp?categoria=carte">Carte</a>
+    <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
+</div>
 <main>
     <%
         String categoria = request.getParameter("categoria");
