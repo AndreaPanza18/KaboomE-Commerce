@@ -11,6 +11,7 @@ body {
     margin: auto;
     width: 500px;
     max-width: 90%;
+    margin-top: 150px;
 }
 
 .container form {
@@ -61,10 +62,16 @@ body {
     color: #e9e9e9;
 }
 
-.login-register a, p{
+.login-register a, p {
     color: #000000;
 }
 
 .login-register a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 80px;
+    }
 }

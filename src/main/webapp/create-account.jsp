@@ -39,16 +39,10 @@
         <div class="input-box">
           <label>Nome</label>
           <input type="text" class="form-control" name="nome" required>
-        </div>
-        <div class="input-box">
           <label>Cognome</label>
           <input type="text" class="form-control" name="cognome" required>
-        </div>
-        <div class="input-box">
           <label>Email</label>
           <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
-        </div>
-        <div class="input-box">
           <label>Password</label>
           <input type="password" class="form-control" name="password" required>
         </div>

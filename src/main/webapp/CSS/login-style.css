@@ -17,6 +17,7 @@ body {
     margin: auto;
     width: 500px;
     max-width: 90%;
+    margin-top: 150px;
 }
 
 .container form {
@@ -72,6 +73,7 @@ body {
 }
 
 .login-register a:hover {
+    color: #f5c33b;
     text-decoration: underline;
 }
 
@@ -82,4 +84,10 @@ body {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 80px;
+    }
 }
