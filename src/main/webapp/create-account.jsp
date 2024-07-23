@@ -29,9 +29,9 @@
     </div>
 </header>
 <div class="categorie">
-    <a href="#">Fumetti</a>
-    <a href="#">Carte</a>
-    <a href="#">Action Figure</a>
+    <a href="articoli-categoria.jsp?categoria=fumetti">Fumetti</a>
+    <a href="articoli-categoria.jsp?categoria=carte">Carte</a>
+    <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
 </div>
 <div class="container">
     <form action="CreateAccount" method="post">
