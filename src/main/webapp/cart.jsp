@@ -96,7 +96,7 @@
         </div>
         <div class="buttons">
             <c:if test="${not empty Cart}">
-                <form action="" method="">
+                <form action="BuyFromCart" method="post">
                     <button type="submit">Acquista</button>
                 </form>
                 <form action="DeleteCart" method="post">
