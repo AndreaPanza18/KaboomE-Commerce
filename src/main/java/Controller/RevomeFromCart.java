@@ -33,7 +33,11 @@ public class RevomeFromCart extends HttpServlet {
             Articolo articolo = articoloDao.getArticoloById(codice);
             for(Articolo a : cartList){
                 if(a.getCodice() == articolo.getCodice()){
-                    cartList.remove(a);
+                    if(a.getQuantita() > 1){
+                        a.setQuantita(a.getQuantita() - 1);
+                    } else {
+                        cartList.remove(a);
+                    }
                     break;
                 }
             }
@@ -43,7 +47,11 @@ public class RevomeFromCart extends HttpServlet {
             Articolo articolo = articoloDao.getArticoloById(codice);
             for(Articolo a : cartList){
                 if(a.getCodice() == articolo.getCodice()){
-                    cartList.remove(a);
+                    if(a.getQuantita() > 1){
+                        a.setQuantita(a.getQuantita() - 1);
+                    } else {
+                        cartList.remove(a);
+                    }
                     break;
                 }
             }

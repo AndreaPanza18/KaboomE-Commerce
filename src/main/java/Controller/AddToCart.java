@@ -22,14 +22,30 @@ public class AddToCart extends HttpServlet {
 
         if(user != null){
             CartDAO newCart = new CartDAO();
-            newCart.addOrUpdateToCart(user.getId_Utente(), codice, 1);
             List<Articolo> articoli = (List<Articolo>) session.getAttribute("Cart");
+            ArticoloDAO getArticolo = new ArticoloDAO();
+            Articolo articolo = getArticolo.getArticoloById(codice);
+            articolo.setQuantita(1);
+
             if(articoli == null){
+                newCart.addOrUpdateToCart(user.getId_Utente(), codice, 1);
                 articoli = newCart.getCart(user.getId_Utente());
                 session.setAttribute("Cart", articoli);
             } else {
-                ArticoloDAO articoloDAO = new ArticoloDAO();
-                articoli.add(articoloDAO.getArticoloById(codice));
+                boolean trovato = false;
+                for(Articolo a : articoli){
+                    if (a.getCodice() == codice){
+                        a.setQuantita(a.getQuantita() + 1);
+                        trovato = true;
+                        break;
+                    }
+                }
+
+                if(!trovato){
+                    newCart.addOrUpdateToCart(user.getId_Utente(), codice, 1);
+                    articoli.add(articolo);
+                }
+
                 session.setAttribute("Cart", articoli);
             }
         } else {
@@ -44,7 +60,6 @@ public class AddToCart extends HttpServlet {
                 session.setAttribute("Cart", articoli);
             } else {
                 boolean trovato = false;
-
                 for (Articolo a : articoli) {
                     if (a.getCodice() == articolo.getCodice()) {
                         int quantita = a.getQuantita() + 1;

@@ -74,6 +74,9 @@
                         </a>
                         <h3>${articolo.nome}</h3>
                         <p>${articolo.prezzo}0 €</p>
+                        <c:if test="${articolo.quantita > 1}">
+                            <p>Quantità: ${articolo.quantita}</p>
+                        </c:if>
                         <form action="AddToWishlist" method="post" class="item-form">
                             <input type="hidden", name="codice", value="${articolo.codice}">
                             <button type="submit", class="btn-add-wishlist">Aggiungi alla wishlist</button>
