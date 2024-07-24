@@ -10,7 +10,7 @@ import java.util.List;
 public class ArticoloDAO {
     public Articolo getArticoloById(long codice){
         String query = "SELECT Nome, Prezzo, DDU, Descrizione, Personaggio, Materiale, A_ID_Autore FROM Articolo WHERE Codice_A_Barre = ?";
-        Articolo articolo = null;
+        Articolo articolo= new Articolo();
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(query);
             ps.setLong(1, codice);

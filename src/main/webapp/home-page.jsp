@@ -67,7 +67,7 @@
                         <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
                     </form>
                     <form action="AddToWishlist" method="post" class="item-form">
-                        <input type="hidden", name="codice", value=""${articolo.codice}>
+                        <input type="hidden", name="codice", value="${articolo.codice}">
                         <button type="submit", class="btn-add-wishlist">Aggiungi alla wishlist</button>
                     </form>
                 </div>
