@@ -1,4 +1,15 @@
+<%@ page import="Model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+    User utente = (User) session.getAttribute("User");
+    if(utente.getPermission()){
+        session.setAttribute("permission", true);
+    } else {
+        session.setAttribute("permission", false);
+    }
+%>
 
 <html>
 <head>
@@ -30,6 +41,11 @@
         <c:if test="${not empty User}">
             <a href="profile-page.jsp">
                 <button>Profilo</button>
+            </a>
+        </c:if>
+        <c:if test="${permission}">
+            <a href="#">
+                <button>Admin</button>
             </a>
         </c:if>
     </div>
