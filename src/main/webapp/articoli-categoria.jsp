@@ -11,6 +11,7 @@
     <title>Articoli</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
+    <link rel="stylesheet" href="CSS/articoli-categoria-style.css">
 </head>
 <body>
 <header>
@@ -44,17 +45,46 @@
     <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
 </div>
 <main>
-    <%
-        String categoria = request.getParameter("categoria");
-        ArticoloDAO getArticoli = new ArticoloDAO();
-        List<Articolo> articoli = getArticoli.getArticoloByCategories(categoria);
-    %>
-    <div class="lista-articoli">
-        <c:forEach var="articolo" items="${articoli}">
-            <div class="item">
-
-            </div>
-        </c:forEach>
+    <div class="articoli-categoria">
+        <c:choose>
+            <c:when test="${param.categoria == 'fumetti'}">
+                <h2>Tutti i nostri FUMETTI</h2>
+            </c:when>
+            <c:when test="${param.categoria == 'carte'}">
+                <h2>Tutti le nostre CARTE</h2>
+            </c:when>
+            <c:when test="${param.categoria == 'action-figure'}">
+                <h2>Tutti le nostre ACTION FIGURE</h2>
+            </c:when>
+            <c:otherwise>
+                <h2>Categoria non trovata</h2>
+            </c:otherwise>
+        </c:choose>
+        <div class="lista-articoli">
+            <%
+                String categoria = request.getParameter("categoria");
+                ArticoloDAO getArticoli = new ArticoloDAO();
+                List<Articolo> articoli = getArticoli.getArticoloByCategories(categoria);
+                session.setAttribute("articoli", articoli);
+            %>
+            <c:forEach items="${articoli}" var="articolo">
+                <div class="item">
+                    <a href="product-page.jsp?codice=${articolo.codice}">
+                        <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
+                    </a>
+                    <h3>${articolo.nome}</h3>
+                    <p>${articolo.prezzo}0 €</p>
+                    <form action="AddToCart" method="post" class="item-form">
+                        <input type="hidden", name="codice", value="${articolo.codice}">
+                        <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
+                    </form>
+                    <form action="AddToWishlist" method="post" class="item-form">
+                        <input type="hidden", name="codice", value="${articolo.codice}">
+                        <button type="submit", class="btn-add-wishlist">Aggiungi alla wishlist</button>
+                    </form>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </main>
 </body>
