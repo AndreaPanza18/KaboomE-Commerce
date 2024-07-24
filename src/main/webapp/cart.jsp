@@ -4,6 +4,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%
+    List<Articolo> cart = (List<Articolo>) session.getAttribute("Cart");
+    if(cart == null){
+        session.setAttribute("subTotal", 0.00);
+    } else {
+        double totale = 0;
+        for(Articolo a : cart){
+            totale += a.getQuantita() * a.getPrezzo();
+        }
+        session.setAttribute("subTotal", totale);
+    }
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,15 +89,17 @@
     </div>
     <div class="footer-bar">
         <div class="subtotal">
-            Subtotale:
+            Subtotale: ${subTotal}0 €
         </div>
         <div class="buttons">
-            <form action="" method="">
-                <button type="submit">Acquista</button>
-            </form>
-            <form action="" method="">
-                <button type="submit">Svuota Carrello</button>
-            </form>
+            <c:if test="${not empty Cart}">
+                <form action="" method="">
+                    <button type="submit">Acquista</button>
+                </form>
+                <form action="" method="">
+                    <button type="submit">Svuota Carrello</button>
+                </form>
+            </c:if>
         </div>
     </div>
 </main>
