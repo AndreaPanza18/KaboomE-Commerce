@@ -42,8 +42,8 @@ public class CartDAO {
     }
 
     public List<Articolo> getCart(long id_Utente){
-        String query = "SELECT a.Codice_A_Barre, c.Quantità" +
-                        "FROM Carrello c" +
+        String query = "SELECT a.Codice_A_Barre, c.Quantità " +
+                        "FROM Carrello c " +
                         "JOIN Articolo a ON c.A_Codice_A_Barre = a.Codice_A_Barre " +
                         "WHERE c.U_ID_Utente = ?";
         List<Articolo> articoli = new ArrayList<>();
@@ -57,7 +57,7 @@ public class CartDAO {
                 long codice = rs.getLong("Codice_A_Barre");
                 int quantita = rs.getInt("Quantità");
 
-                ArticoloDAO getArticolo = null;
+                ArticoloDAO getArticolo = new ArticoloDAO();
                 Articolo articolo = getArticolo.getArticoloById(codice);
                 articolo.setQuantita(quantita);
                 articoli.add(articolo);

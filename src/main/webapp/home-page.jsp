@@ -26,7 +26,7 @@
         </div>
     </form>
     <div class="cta">
-        <a href="#">
+        <a href="cart.jsp">
             <button>Carrello</button>
         </a>
         <c:if test="${empty User}">

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ArticoloDAO {
     public Articolo getArticoloById(long codice){
-        String query = "SELECT Nome, Prezzo, DDU, Descrizione, Personaggio, Materiale, A_ID_Autore FROM Articolo WHERE Codice_A_Barre = ?";
+        String query = "SELECT Nome, Prezzo, DDU, Descrizione, Personaggio, Materiale, A_ID_Autore, Url_immagine FROM Articolo WHERE Codice_A_Barre = ?";
         Articolo articolo= new Articolo();
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(query);
@@ -24,6 +24,7 @@ public class ArticoloDAO {
                 articolo.setPersonaggio(rs.getString(5));
                 articolo.setMateriale(rs.getString(6));
                 articolo.setId_Autore(rs.getLong(7));
+                articolo.setUrlImmagine(rs.getString(8));
             }
             return articolo;
         } catch (SQLException e){
