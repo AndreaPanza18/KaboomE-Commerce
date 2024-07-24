@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 
         if(utente == null){
             request.setAttribute("loginError", "L'account non è valido o la password è errata");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         } else {
             HttpSession session = request.getSession(true);
