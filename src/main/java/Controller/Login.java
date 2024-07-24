@@ -52,8 +52,7 @@ public class Login extends HttpServlet {
             List<Articolo> acquisti = getAcquisti.BoughtArticles(utente.getId_Utente());
             session.setAttribute("BoughtArticles", acquisti);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home-page.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("home-page.jsp");
         }
     }
 }

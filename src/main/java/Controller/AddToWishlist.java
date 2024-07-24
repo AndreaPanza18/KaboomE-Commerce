@@ -3,7 +3,6 @@ package Controller;
 import Model.Articolo;
 import Model.User;
 import Model.WishlistDAO;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
