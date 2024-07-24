@@ -99,7 +99,7 @@
                 <form action="" method="">
                     <button type="submit">Acquista</button>
                 </form>
-                <form action="" method="">
+                <form action="DeleteCart" method="post">
                     <button type="submit">Svuota Carrello</button>
                 </form>
             </c:if>
