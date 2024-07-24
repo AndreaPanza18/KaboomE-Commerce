@@ -9,21 +9,16 @@ import java.util.List;
 
 public class WishlistDAO {
 
-    public boolean addToWishList(long idUtente, long codice){
-        if(!isIn(idUtente, codice)){
-            String query = "INSERT INTO Wishlist(U_ID_Utente, A_Codice_A_Barre) VALUES(?, ?)";
+    public void addToWishList(long idUtente, long codice){
+        String query = "INSERT INTO Wishlist(U_ID_Utente, A_Codice_A_Barre) VALUES(?, ?)";
 
-            try (Connection con = ConPool.getConnection()){
-                PreparedStatement ps = con.prepareStatement(query);
-                ps.setLong(1, idUtente);
-                ps.setLong(2, codice);
-                ps.executeQuery();
-                return true;
-            } catch (SQLException e){
-                throw new RuntimeException(e);
-            }
-        } else {
-            return false;
+        try (Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setLong(1, idUtente);
+            ps.setLong(2, codice);
+            ps.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
         }
     }
 
@@ -34,7 +29,7 @@ public class WishlistDAO {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setLong(1, idUtente);
             ps.setLong(2, codice);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch(SQLException e){
             throw new RuntimeException(e);
         }
@@ -50,8 +45,8 @@ public class WishlistDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                Articolo articolo = null;
-                ArticoloDAO getArticolo = null;
+                Articolo articolo;
+                ArticoloDAO getArticolo = new ArticoloDAO();
 
                 articolo = getArticolo.getArticoloById(rs.getLong(1));
                 wishlist.add(articolo);

@@ -7,13 +7,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 
 @WebServlet("/DeleteCart")
 public class DeleteCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String originPage = request.getHeader("Referer");
         HttpSession session = request.getSession(true);
         User utente = (User) session.getAttribute("User");
 
@@ -23,6 +23,10 @@ public class DeleteCart extends HttpServlet {
         }
 
         session.removeAttribute("Cart");
-        response.sendRedirect("cart.jsp");
+        if(originPage != null) {
+            response.sendRedirect(originPage);
+        } else {
+            response.sendRedirect("cart.jsp");
+        }
     }
 }

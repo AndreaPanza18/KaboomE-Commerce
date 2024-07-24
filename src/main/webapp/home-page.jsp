@@ -68,7 +68,7 @@
                     </form>
                     <form action="AddToWishlist" method="post" class="item-form">
                         <input type="hidden", name="codice", value="${articolo.codice}">
-                        <button type="submit", class="btn-add-wishlist">Aggiungi alla wishlist</button>
+                        <button type="submit", class="btn-add-wishlist">Aggiungi alla Wishlist</button>
                     </form>
                 </div>
             </c:forEach>

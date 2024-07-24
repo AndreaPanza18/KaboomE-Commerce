@@ -14,6 +14,7 @@ import java.util.List;
 public class AddToCart extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String originPage = request.getHeader("Referer");
         String str = request.getParameter("codice");
         long codice = Long.parseLong(str);
 
@@ -75,6 +76,10 @@ public class AddToCart extends HttpServlet {
                 session.setAttribute("Cart", articoli);
             }
         }
-        response.sendRedirect("home-page.jsp");
+        if(originPage != null) {
+            response.sendRedirect(originPage);
+        } else {
+            response.sendRedirect("home-page.jsp");
+        }
     }
 }
