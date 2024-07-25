@@ -2,6 +2,7 @@
 <%@ page import="Model.ArticoloDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%
     ArticoloDAO getArticolo = new ArticoloDAO();
@@ -63,10 +64,20 @@
                 <input type="hidden" name="codice" value="${articolo.codice}">
                 <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
             </form>
-            <form action="AddToWishlist" method="post">
-                <input type="hidden" name="codice" value="${articolo.codice}">
-                <button type="submit" class="add-to-wishlist">Aggiungi alla Wishlist</button>
-            </form>
+            <c:choose>
+                <c:when test="${not empty Wishlist && fn:contains(codiciWishlist, articolo.codice)}">
+                    <form action="RemoveFromWishlist" method="post" class="item-form">
+                        <input type="hidden" name="codice" value="${articolo.codice}">
+                        <button type="submit" class="btn-remove-wishlist">Rimuovi dalla Wishlist</button>
+                    </form>
+                </c:when>
+                <c:otherwise>
+                    <form action="AddToWishlist" method="post" class="item-form">
+                        <input type="hidden" name="codice" value="${articolo.codice}">
+                        <button type="submit" class="add-to-wishlist">Aggiungi alla Wishlist</button>
+                    </form>
+                </c:otherwise>
+            </c:choose>
             <div class="description">
                 <h2>Descrizione:</h2>
                 <p>${articolo.descrizione}</p>

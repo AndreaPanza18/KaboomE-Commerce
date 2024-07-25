@@ -81,8 +81,17 @@ body {
     background-color: #145dbf;
 }
 
-.product-details button.add-to-wishlist {
+.product-details button.add-to-wishlist,
+.product-details button.btn-remove-wishlist {
     margin-top: 10px;
+}
+
+.product-details button.btn-remove-wishlist {
+    background-color: #e74c3c;
+}
+
+.product-details button.btn-remove-wishlist:hover {
+    background-color: #c0392b;
 }
 
 .product-details .description {

@@ -62,7 +62,7 @@ body {
     margin: 5px 0;
 }
 
-.btn-add-cart, .btn-add-wishlist {
+.btn-add-cart, .btn-add-wishlist, .btn-remove-wishlist {
     background-color: #1877f2;
     color: #ffffff;
     border: none;
@@ -76,6 +76,14 @@ body {
 
 .btn-add-cart:hover, .btn-add-wishlist:hover {
     background-color: #145dbf;
+}
+
+.btn-remove-wishlist {
+    background-color: #e74c3c;
+}
+
+.btn-remove-wishlist:hover {
+    background-color: #c0392b;
 }
 
 @media (max-width: 768px) {

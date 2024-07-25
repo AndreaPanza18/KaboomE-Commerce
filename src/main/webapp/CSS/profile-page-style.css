@@ -77,8 +77,16 @@ body {
     transition: background-color 0.3s;
 }
 
-.btn-add-cart:hover, .btn-add-wishlist:hover {
+.btn-add-cart:hover {
     background-color: #145dbf;
+}
+
+.btn-add-wishlist {
+    background-color: #e74c3c;
+}
+
+.btn-add-wishlist:hover {
+    background-color: #c0392b;
 }
 
 .acquisti {
