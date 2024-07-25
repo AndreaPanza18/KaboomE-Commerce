@@ -105,10 +105,10 @@
                     <c:forEach var="articolo" items="${acquisto.articoli}">
                         <tr>
                             <td><c:out value="${acquisto.dataAcquisto}" /></td>
-                            <td><c:out value="${acquisto.prezzoTotale} €" /></td>
+                            <td><c:out value="${acquisto.prezzoTotale}0 €" /></td>
                             <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
                             <td><c:out value="${articolo.nome}" /></td>
-                            <td><c:out value="${articolo.prezzo} €" /></td>
+                            <td><c:out value="${articolo.prezzo}0 €" /></td>
                             <td><c:out value="${articolo.quantita}" /></td>
                         </tr>
                     </c:forEach>
