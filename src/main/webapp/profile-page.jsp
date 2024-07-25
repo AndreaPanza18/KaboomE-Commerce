@@ -11,15 +11,6 @@
         session.setAttribute("permission", false);
     }
 %>
-<%
-    List<Purchase> acquisti = (List<Purchase>) session.getAttribute("Acquisti");
-    if (acquisti == null) {
-        System.out.println("La variabile BoughtArticles è null");
-    } else {
-        System.out.println("La variabile BoughtArticles contiene " + acquisti.size() + " acquisti");
-    }
-%>
-
 
 <html>
 <head>
@@ -62,59 +53,69 @@
 <main>
     <div class="wishlist">
         <h2>La tua WISHLIST</h2>
-        <div class="lista-articoli">
-            <%
-                WishlistDAO getWishlist = new WishlistDAO();
-                List<Articolo> articoli = getWishlist.getWishlist(utente.getId_Utente());
-                session.setAttribute("wishlist", articoli);
-            %>
-            <c:forEach items="${wishlist}" var="articolo">
-                <div class="item">
-                    <a href="product-page.jsp?codice=${articolo.codice}">
-                        <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
-                    </a>
-                    <h3>${articolo.nome}</h3>
-                    <p>${articolo.prezzo}0 €</p>
-                    <form action="AddToCart" method="post" class="item-form">
-                        <input type="hidden", name="codice", value="${articolo.codice}">
-                        <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
-                    </form>
-                    <form action="RemoveFromWishlist" method="post" class="item-form">
-                        <input type="hidden", name="codice", value="${articolo.codice}">
-                        <button type="submit", class="btn-add-wishlist">Rimuovi dalla Wishlist</button>
-                    </form>
-                </div>
-            </c:forEach>
-        </div>
+        <c:if test="${empty Wishlist}">
+            <h3>La Wishlist è vuota... Sicuro che non desideri niente ;)</h3>
+        </c:if>
+        <c:if test="${not empty Wishlist}">
+            <div class="lista-articoli">
+                <%
+                    WishlistDAO getWishlist = new WishlistDAO();
+                    List<Articolo> articoli = getWishlist.getWishlist(utente.getId_Utente());
+                    session.setAttribute("wishlist", articoli);
+                %>
+                <c:forEach items="${wishlist}" var="articolo">
+                    <div class="item">
+                        <a href="product-page.jsp?codice=${articolo.codice}">
+                            <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
+                        </a>
+                        <h3>${articolo.nome}</h3>
+                        <p>${articolo.prezzo}0 €</p>
+                        <form action="AddToCart" method="post" class="item-form">
+                            <input type="hidden", name="codice", value="${articolo.codice}">
+                            <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
+                        </form>
+                        <form action="RemoveFromWishlist" method="post" class="item-form">
+                            <input type="hidden", name="codice", value="${articolo.codice}">
+                            <button type="submit", class="btn-add-wishlist">Rimuovi dalla Wishlist</button>
+                        </form>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:if>
     </div>
     <div class="acquisti">
         <h2>Tutti i tuoi acquisti precedenti:</h2>
-        <table border="1">
-            <thead>
-            <tr>
-                <th>Data Acquisto</th>
-                <th>Prezzo Totale</th>
-                <th>Immagine</th>
-                <th>Nome Articolo</th>
-                <th>Prezzo</th>
-                <th>Quantità</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="acquisto" items="${sessionScope.Acquisti}">
-                <c:forEach var="articolo" items="${acquisto.articoli}">
-                    <tr>
-                        <td><c:out value="${acquisto.dataAcquisto}" /></td>
-                        <td><c:out value="${acquisto.prezzoTotale} €" /></td>
-                        <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
-                        <td><c:out value="${articolo.nome}" /></td>
-                        <td><c:out value="${articolo.prezzo} €" /></td>
-                        <td><c:out value="${articolo.quantita}" /></td>
-                    </tr>
+        <c:if test="${empty Acquisti}">
+            <h3>Non hai ancora acquistato niente... Affrettati prima che finiamo le scorte!</h3>
+        </c:if>
+        <c:if test="${not empty Acquisti}">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Data Acquisto</th>
+                    <th>Prezzo Totale</th>
+                    <th>Immagine</th>
+                    <th>Nome Articolo</th>
+                    <th>Prezzo</th>
+                    <th>Quantità</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="acquisto" items="${sessionScope.Acquisti}">
+                    <c:forEach var="articolo" items="${acquisto.articoli}">
+                        <tr>
+                            <td><c:out value="${acquisto.dataAcquisto}" /></td>
+                            <td><c:out value="${acquisto.prezzoTotale} €" /></td>
+                            <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
+                            <td><c:out value="${articolo.nome}" /></td>
+                            <td><c:out value="${articolo.prezzo} €" /></td>
+                            <td><c:out value="${articolo.quantita}" /></td>
+                        </tr>
+                    </c:forEach>
                 </c:forEach>
-            </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 </main>
 </body>

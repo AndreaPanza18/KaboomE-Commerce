@@ -93,6 +93,13 @@ body {
     text-align: center;
 }
 
+.acquisti h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .acquisti table {
     width: 100%;
     border-collapse: collapse;
