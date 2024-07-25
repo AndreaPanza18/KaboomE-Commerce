@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -10,6 +11,18 @@
     } else {
         session.setAttribute("permission", false);
     }
+%>
+
+<%
+    DecimalFormat df = new DecimalFormat("#.0");
+    List<Purchase> acquisti = (List<Purchase>) session.getAttribute("Acquisti");
+    for(int i = 0; i < acquisti.size(); i++){
+        Purchase acquisto = acquisti.get(i);
+        String totaleFormattato = df.format(acquisto.getPrezzoTotale());
+        double totale = Double.parseDouble(totaleFormattato.replace(',', '.'));
+        acquisti.get(i).setPrezzoTotale(totale);
+    }
+    session.setAttribute("Acquisti", acquisti);
 %>
 
 <html>

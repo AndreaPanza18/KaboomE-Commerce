@@ -59,6 +59,7 @@ public class PurchaseDAO {
                 ArticoloDAO getArticolo = new ArticoloDAO();
                 articoli = acquisto.getArticoli();
                 Articolo articolo = getArticolo.getArticoloById(rs.getLong("A_Codice_A_Barre"));
+                articolo.setQuantita(rs.getInt("Quantità"));
                 articoli.add(articolo);
 
                 acquisto.setArticoli(articoli);

@@ -1,6 +1,7 @@
 <%@ page import="Model.ArticoloDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Articolo" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -14,9 +15,11 @@
         for(Articolo a : cart){
             totale += a.getQuantita() * a.getPrezzo();
         }
-        session.setAttribute("subTotal", totale);
-    }
 
+        DecimalFormat df = new DecimalFormat("#.0");
+        String totaleFormattato = df.format(totale);
+        session.setAttribute("subTotal", totaleFormattato);
+    }
 %>
 
 <!DOCTYPE html>
