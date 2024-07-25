@@ -51,7 +51,7 @@ public class PurchaseDAO {
 
             while (rs.next()){
                 Articolo articolo;
-                ArticoloDAO getArticolo = null;
+                ArticoloDAO getArticolo = new ArticoloDAO();
                 articolo = getArticolo.getArticoloById(rs.getLong("A_Codice_A_Barre"));
                 articoli.add(articolo);
             }

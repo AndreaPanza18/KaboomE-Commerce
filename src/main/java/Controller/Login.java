@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
             List<Articolo> acquisti = getAcquisti.BoughtArticles(utente.getId_Utente());
             session.setAttribute("BoughtArticles", acquisti);
 
-            response.sendRedirect("home-page.jsp");
+            response.sendRedirect("profile-page.jsp");
         }
     }
 }
