@@ -2,17 +2,49 @@
 
 body {
     font-family: 'Prompt', sans-serif;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/sfondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
 }
 
 .articoli-categoria {
     padding: 20px;
     text-align: center;
     margin-top: 120px;
+    position: relative;
+    z-index: 1;
 }
 
 .articoli-categoria h2 {
     font-size: 34px;
-    color: #1877f2;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
