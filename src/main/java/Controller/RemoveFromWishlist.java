@@ -30,7 +30,7 @@ public class RemoveFromWishlist extends HttpServlet {
             WishlistDAO getWishlist = new WishlistDAO();
             getWishlist.removeFromWishlist(utente.getId_Utente(), codice);
             List<Articolo> wishlist = getWishlist.getWishlist(utente.getId_Utente());
-            session.setAttribute("wishlist", wishlist);
+            session.setAttribute("Wishlist", wishlist);
             if(originPage != null) {
                 response.sendRedirect(originPage);
             } else {

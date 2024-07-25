@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/AddToWishlist")
@@ -34,7 +35,14 @@ public class AddToWishlist extends HttpServlet {
             } else {
                 getWishlist.addToWishList(utente.getId_Utente(), codice);
                 List<Articolo> wishlist = getWishlist.getWishlist(utente.getId_Utente());
-                session.setAttribute("wishlist", wishlist);
+                List<Long> codici = new ArrayList<>();
+                for(int i = 0; i < wishlist.size(); i++){
+                    codici.add(wishlist.get(i).getCodice());
+                }
+
+                session.setAttribute("codiciWishlist", codici);
+                session.setAttribute("Wishlist", wishlist);
+
                 if(originPage != null) {
                     response.sendRedirect(originPage);
                 } else {

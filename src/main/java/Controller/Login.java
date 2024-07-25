@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/Login")
@@ -50,6 +51,11 @@ public class Login extends HttpServlet {
 
             WishlistDAO getWishlist = new WishlistDAO();
             List<Articolo> wishlist = getWishlist.getWishlist(utente.getId_Utente());
+            List<Long> codici = new ArrayList<>();
+            for(int i = 0; i < wishlist.size(); i++){
+                codici.add(wishlist.get(i).getCodice());
+            }
+            session.setAttribute("codiciWishlist", codici);
             session.setAttribute("Wishlist", wishlist);
 
             PurchaseDAO getAcquisti = new PurchaseDAO();
