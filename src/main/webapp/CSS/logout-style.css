@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:500&display=swap');
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.scritte {
+    padding: 20px;
+    text-align: center;
+    margin-top: 120px;
+}
+
+.scritte h2 {
+    font-size: 34px;
+    color: #1877f2;
+    margin-bottom: 20px;
+}
+
+.scritte h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}

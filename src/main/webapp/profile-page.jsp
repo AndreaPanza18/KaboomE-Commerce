@@ -38,16 +38,9 @@
         <a href="cart.jsp">
             <button>Carrello</button>
         </a>
-        <c:if test="${empty User}">
-            <a href="login.jsp">
-                <button>Login</button>
-            </a>
-        </c:if>
-        <c:if test="${not empty User}">
-            <a href="profile-page.jsp">
-                <button>Profilo</button>
-            </a>
-        </c:if>
+        <form action="Logout" method="post">
+            <button type="submit" class="cta">Logout</button>
+        </form>
         <c:if test="${permission}">
             <a href="#">
                 <button>Admin</button>

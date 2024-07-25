@@ -1,6 +1,7 @@
 <%@ page import="Model.ArticoloDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Articolo" %>
+<%@ page import="Model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
