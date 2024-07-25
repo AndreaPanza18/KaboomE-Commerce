@@ -31,7 +31,7 @@ public class BuyFromCart extends HttpServlet {
 
             session.setAttribute("Acquisti", acquisti);
             session.removeAttribute("Cart");
-            response.sendRedirect("home-page.jsp");
+            response.sendRedirect("acquisto.jsp");
         }
     }
 }
