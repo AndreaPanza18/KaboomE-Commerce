@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet("/Login")
@@ -60,6 +62,12 @@ public class Login extends HttpServlet {
 
             PurchaseDAO getAcquisti = new PurchaseDAO();
             List<Purchase> acquisti = getAcquisti.getPurchase(utente.getId_Utente());
+            Collections.sort(acquisti, new Comparator<Purchase>() {
+                @Override
+                public int compare(Purchase a1, Purchase a2) {
+                    return Double.compare(a2.getIdAcquisto(), a1.getIdAcquisto());
+                }
+            });
             session.setAttribute("Acquisti", acquisti);
 
             response.sendRedirect("profile-page.jsp");

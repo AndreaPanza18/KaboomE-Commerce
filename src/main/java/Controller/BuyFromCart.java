@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @WebServlet("/BuyFromCart")
@@ -28,6 +30,12 @@ public class BuyFromCart extends HttpServlet {
             PurchaseDAO purchase = new PurchaseDAO();
             purchase.Purchase(cart, user.getId_Utente(), LocalDate.now());
             List<Purchase> acquisti = purchase.getPurchase(user.getId_Utente());
+            Collections.sort(acquisti, new Comparator<Purchase>() {
+                @Override
+                public int compare(Purchase a1, Purchase a2) {
+                    return Double.compare(a2.getIdAcquisto(), a1.getIdAcquisto());
+                }
+            });
 
             session.setAttribute("Acquisti", acquisti);
             session.removeAttribute("Cart");

@@ -51,6 +51,7 @@ public class PurchaseDAO {
 
             while (rs.next()){
                 Purchase acquisto = new Purchase();
+                acquisto.setIdAcquisto(rs.getLong("ID_Acquisto"));
                 acquisto.setIdUtente(idUtente);
                 acquisto.setDataAcquisto(rs.getDate("Data_Acquisto").toLocalDate());
                 acquisto.setPrezzoTotale(rs.getDouble("Prezzo_Totale"));
