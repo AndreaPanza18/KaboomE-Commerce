@@ -41,7 +41,11 @@ public class Login extends HttpServlet {
                 for(Articolo a : cart){
                     getCart.addOrUpdateToCart(utente.getId_Utente(), a.getCodice(), a.getQuantita());
                 }
-                session.setAttribute("Cart", cart);
+                List<Articolo> realCart = getCart.getCart(utente.getId_Utente());
+                session.setAttribute("Cart", realCart);
+            } else {
+                List<Articolo> realCart = getCart.getCart(utente.getId_Utente());
+                session.setAttribute("Cart", realCart);
             }
 
             WishlistDAO getWishlist = new WishlistDAO();
