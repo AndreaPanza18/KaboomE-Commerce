@@ -24,10 +24,12 @@ public class BuyFromCart extends HttpServlet {
             CartDAO cartDAO = new CartDAO();
             cartDAO.deleteCart(user.getId_Utente());
             List<Articolo> cart = (List<Articolo>) session.getAttribute("Cart");
+
             PurchaseDAO purchase = new PurchaseDAO();
-
             purchase.Purchase(cart, user.getId_Utente(), LocalDate.now());
+            List<Purchase> acquisti = purchase.getPurchase(user.getId_Utente());
 
+            session.setAttribute("Acquisti", acquisti);
             session.removeAttribute("Cart");
             response.sendRedirect("home-page.jsp");
         }

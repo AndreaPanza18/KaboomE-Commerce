@@ -49,8 +49,8 @@ public class Login extends HttpServlet {
             session.setAttribute("Wishlist", wishlist);
 
             PurchaseDAO getAcquisti = new PurchaseDAO();
-            List<Articolo> acquisti = getAcquisti.BoughtArticles(utente.getId_Utente());
-            session.setAttribute("BoughtArticles", acquisti);
+            List<Purchase> acquisti = getAcquisti.getPurchase(utente.getId_Utente());
+            session.setAttribute("Acquisti", acquisti);
 
             response.sendRedirect("profile-page.jsp");
         }

@@ -81,6 +81,55 @@ body {
     background-color: #145dbf;
 }
 
+.acquisti {
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.acquisti h2 {
+    font-size: 28px;
+    color: #1877f2;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.acquisti table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.acquisti th {
+    background-color: #1877f2;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+}
+
+.acquisti td {
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.acquisti tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.acquisti tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.acquisti img {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.acquisti tr:hover {
+    background-color: #e0e0e0;
+}
+
 @media (max-width: 768px) {
     .wishlist {
         padding: 10px;
@@ -92,5 +141,19 @@ body {
 
     .item {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .acquisti table {
+        font-size: 14px;
+    }
+
+    .acquisti th, .acquisti td {
+        padding: 8px;
+    }
+
+    .acquisti img {
+        width: 60px;
     }
 }

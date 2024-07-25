@@ -1,8 +1,5 @@
-<%@ page import="Model.User" %>
-<%@ page import="Model.ArticoloDAO" %>
-<%@ page import="Model.Articolo" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Model.WishlistDAO" %>
+<%@ page import="Model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -14,6 +11,15 @@
         session.setAttribute("permission", false);
     }
 %>
+<%
+    List<Purchase> acquisti = (List<Purchase>) session.getAttribute("Acquisti");
+    if (acquisti == null) {
+        System.out.println("La variabile BoughtArticles è null");
+    } else {
+        System.out.println("La variabile BoughtArticles contiene " + acquisti.size() + " acquisti");
+    }
+%>
+
 
 <html>
 <head>
@@ -80,6 +86,35 @@
                 </div>
             </c:forEach>
         </div>
+    </div>
+    <div class="acquisti">
+        <h2>Tutti i tuoi acquisti precedenti:</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Data Acquisto</th>
+                <th>Prezzo Totale</th>
+                <th>Immagine</th>
+                <th>Nome Articolo</th>
+                <th>Prezzo</th>
+                <th>Quantità</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="acquisto" items="${sessionScope.Acquisti}">
+                <c:forEach var="articolo" items="${acquisto.articoli}">
+                    <tr>
+                        <td><c:out value="${acquisto.dataAcquisto}" /></td>
+                        <td><c:out value="${acquisto.prezzoTotale} €" /></td>
+                        <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
+                        <td><c:out value="${articolo.nome}" /></td>
+                        <td><c:out value="${articolo.prezzo} €" /></td>
+                        <td><c:out value="${articolo.quantita}" /></td>
+                    </tr>
+                </c:forEach>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </main>
 </body>

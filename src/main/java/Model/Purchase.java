@@ -1,0 +1,45 @@
+package Model;
+
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Purchase {
+    private long idUtente;
+    private LocalDate dataAcquisto;
+    private double prezzoTotale;
+    private List<Articolo> articoli = new ArrayList<>();
+
+    public long getIdUtente() {
+        return idUtente;
+    }
+
+    public LocalDate getDataAcquisto() {
+        return dataAcquisto;
+    }
+
+    public double getPrezzoTotale() {
+        return prezzoTotale;
+    }
+
+    public List<Articolo> getArticoli() {
+        return articoli;
+    }
+
+    public void setIdUtente(long idUtente) {
+        this.idUtente = idUtente;
+    }
+
+    public void setDataAcquisto(LocalDate dataAcquisto) {
+        this.dataAcquisto = dataAcquisto;
+    }
+
+    public void setPrezzoTotale(double prezzoTotale) {
+        this.prezzoTotale = prezzoTotale;
+    }
+
+    public void setArticoli(List<Articolo> articoli) {
+        this.articoli = articoli;
+    }
+}

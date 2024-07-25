@@ -40,9 +40,9 @@ public class PurchaseDAO {
         }
     }
 
-    public List<Articolo> BoughtArticles(long idUtente){
-        String query = "SELECT A_Codice_A_Barre FROM Acquisti WHERE U_ID_Utente = ?";
-        List<Articolo> articoli = new ArrayList<>();
+    public List<Purchase> getPurchase(long idUtente){
+        String query = "SELECT * FROM Acquisti WHERE U_ID_Utente = ?";
+        List<Purchase> acquisti = new ArrayList<>();
 
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(query);
@@ -50,13 +50,22 @@ public class PurchaseDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                Articolo articolo;
+                Purchase acquisto = new Purchase();
+                acquisto.setIdUtente(idUtente);
+                acquisto.setDataAcquisto(rs.getDate("Data_Acquisto").toLocalDate());
+                acquisto.setPrezzoTotale(rs.getDouble("Prezzo_Totale"));
+
+                List<Articolo> articoli;
                 ArticoloDAO getArticolo = new ArticoloDAO();
-                articolo = getArticolo.getArticoloById(rs.getLong("A_Codice_A_Barre"));
+                articoli = acquisto.getArticoli();
+                Articolo articolo = getArticolo.getArticoloById(rs.getLong("A_Codice_A_Barre"));
                 articoli.add(articolo);
+
+                acquisto.setArticoli(articoli);
+                acquisti.add(acquisto);
             }
 
-            return articoli;
+            return acquisti;
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
