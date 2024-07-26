@@ -123,7 +123,7 @@
                             <td><c:out value="${acquisto.dataAcquisto}" /></td>
                             <td><c:out value="${acquisto.prezzoTotale}0 €" /></td>
                             <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
-                            <td><c:out value="${articolo.nome}" /></td>
+                            <td><a href="product-page.jsp?codice=${articolo.codice}"><c:out value="${articolo.nome}" /></a></td>
                             <td><c:out value="${articolo.prezzo}0 €" /></td>
                             <td><c:out value="${articolo.quantita}" /></td>
                         </tr>

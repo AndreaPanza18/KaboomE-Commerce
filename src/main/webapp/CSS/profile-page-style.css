@@ -154,6 +154,15 @@ body::before {
     border-bottom: 1px solid #ddd;
 }
 
+.acquisti a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.acquisti a:hover {
+    text-decoration: underline;
+}
+
 .acquisti tr:nth-child(even) {
     background-color: #f1f1f1;
 }
