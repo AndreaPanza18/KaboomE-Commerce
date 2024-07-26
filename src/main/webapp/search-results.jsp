@@ -26,7 +26,6 @@
             <input class="search-input" type="search" name="query" placeholder="Cerca..." required>
             <div class="suggestions"></div>
         </div>
-        <button type="submit" class="search-button">Cerca</button>
     </form>
     <div class="cta">
         <a href="cart.jsp">
