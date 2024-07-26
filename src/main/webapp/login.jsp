@@ -18,6 +18,7 @@
     <form action="search-results.jsp" method="get" class="search-form">
         <div class="search">
             <input class="search-input" type="search" id="search-input" name="query" placeholder="Cerca..." required>
+            <button type="submit" class="search-button">Cerca</button>
             <div class="suggestions" id="results"></div>
         </div>
     </form>

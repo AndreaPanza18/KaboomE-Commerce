@@ -35,7 +35,7 @@ header {
 }
 
 .search {
-    --padding: 10px;
+    --padding: 7px;
     width: 500px;
     display: flex;
     align-items: center;
@@ -61,15 +61,33 @@ header {
     border: none;
     background: transparent;
     flex: 1;
+    height: 100%;
 }
 
 .search-input::placeholder {
     color: rgba(255, 255, 255, 0.9);
 }
 
+.search-button {
+    padding: 5px 15px;
+    background-color: rgba(245, 195, 59, 1);
+    border: none;
+    border-radius: 0 50px 50px 0;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 0;
+    height: 100%;
+}
+
+.search-button:hover {
+    background-color: rgba(245, 195, 59, 0.8);
+}
+
 .suggestions {
     position: absolute;
-    top: calc(100% - var(--padding));
+    top: 100%;
     left: 0;
     width: 100%;
     max-height: 200px;
@@ -130,3 +148,4 @@ button.cart-button {
 button.login-button {
     margin-left: 5px;
 }
+
