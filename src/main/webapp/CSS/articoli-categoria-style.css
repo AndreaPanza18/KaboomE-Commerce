@@ -46,6 +46,7 @@ body::after {
     font-size: 34px;
     color: #ffffff;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .lista-articoli {

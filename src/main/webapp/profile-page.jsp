@@ -106,7 +106,7 @@
                 <thead>
                 <tr>
                     <th>Data Acquisto</th>
-                    <th>Prezzo Totale</th>
+                    <th>Prezzo Totale Acquisto</th>
                     <th>Immagine</th>
                     <th>Nome Articolo</th>
                     <th>Prezzo</th>

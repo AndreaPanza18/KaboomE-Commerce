@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:500>');
+
 body {
     font-family: 'Prompt', sans-serif;
     position: relative;
@@ -31,6 +33,7 @@ body::before {
     font-size: 34px;
     color: #ffffff;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .lista-articoli {
