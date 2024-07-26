@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
     <link rel="stylesheet" href="CSS/homepage-style.css">
-    <script src="JS/search.js" defer></script>
 </head>
 <body>
 <header>
