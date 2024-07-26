@@ -26,10 +26,12 @@
     <a href="home-page.jsp">
         <img class="logo" src="images/Logo.png" alt="logo">
     </a>
-    <form>
+    <form action="search-results.jsp" method="get" class="search-form">
         <div class="search">
-            <input class="search-input" type="search" placeholder="Cerca...">
+            <input class="search-input" type="search" name="query" placeholder="Cerca..." required>
+            <div class="suggestions"></div>
         </div>
+        <button type="submit" class="search-button">Cerca</button>
     </form>
     <div class="cta">
         <a href="cart.jsp">

@@ -1,7 +1,6 @@
 <%@ page import="Model.ArticoloDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Articolo" %>
-<%@ page import="Model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -11,10 +10,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <title>Risultati della Ricerca</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
-    <link rel="stylesheet" href="CSS/homepage-style.css">
+    <link rel="stylesheet" href="CSS/search-result-style.css">
     <script src="JS/search.js" defer></script>
 </head>
 <body>
@@ -45,21 +44,22 @@
         </c:if>
     </div>
 </header>
+<div class="categorie">
+    <a href="articoli-categoria.jsp?categoria=fumetti">Fumetti</a>
+    <a href="articoli-categoria.jsp?categoria=carte">Carte</a>
+    <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
+</div>
 <main>
-    <div class="categorie">
-        <a href="articoli-categoria.jsp?categoria=fumetti">Fumetti</a>
-        <a href="articoli-categoria.jsp?categoria=carte">Carte</a>
-        <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
-    </div>
-    <div class="ultime-uscite">
-        <h2>Ultime Uscite</h2>
+    <div class="articoli-results">
+        <h2>Risultati della Ricerca</h2>
         <div class="lista-articoli">
             <%
+                String query = request.getParameter("query");
                 ArticoloDAO getArticolo = new ArticoloDAO();
-                List<Articolo> articoli = getArticolo.getLastdrop();
-                session.setAttribute("ultimeUscite", articoli);
+                List<Articolo> articoli = getArticolo.getArticoliByName(query);
+                session.setAttribute("risultatiRicerca", articoli);
             %>
-            <c:forEach items="${ultimeUscite}" var="articolo">
+            <c:forEach items="${risultatiRicerca}" var="articolo">
                 <div class="item">
                     <a href="product-page.jsp?codice=${articolo.codice}">
                         <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">

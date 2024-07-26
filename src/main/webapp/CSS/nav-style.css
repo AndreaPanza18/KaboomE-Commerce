@@ -43,6 +43,7 @@ header {
     border-radius: 28px;
     background: #f5c33b;
     margin: 0 auto;
+    position: relative; /* Ensures suggestions are positioned relative to this container */
 }
 
 .search-input {
@@ -58,6 +59,35 @@ header {
 
 .search-input::placeholder {
     color: rgba(255, 255, 255, 0.9);
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% - var(--padding) * 2); /* Adjust width to align with search box */
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto; /* Allows scrolling if suggestions exceed max-height */
+    background: #f5c33b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Ensure it appears above other content */
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.suggestion-item:hover {
+    background-color: rgba(245, 195, 59, 0.8);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
 }
 
 .cta {
