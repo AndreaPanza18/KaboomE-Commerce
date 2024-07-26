@@ -28,7 +28,6 @@
             <div class="suggestions" id="results"></div>
         </div>
     </form>
-
     <div class="cta">
         <a href="cart.jsp">
             <button>Carrello</button>

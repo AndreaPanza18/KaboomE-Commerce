@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
     <link rel="stylesheet", href="CSS/acquisto-style.css">
+    <script src="JS/search.js" defer></script>
     <script type="text/javascript">
         function redirectAfterTimeout() {
             setTimeout(function() {
@@ -25,8 +26,8 @@
     </a>
     <form action="search-results.jsp" method="get" class="search-form">
         <div class="search">
-            <input class="search-input" type="search" name="query" placeholder="Cerca..." required>
-            <div class="suggestions"></div>
+            <input class="search-input" type="search" id="search-input" name="query" placeholder="Cerca..." required>
+            <div class="suggestions" id="results"></div>
         </div>
     </form>
     <div class="cta">
