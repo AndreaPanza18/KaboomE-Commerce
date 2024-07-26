@@ -16,13 +16,17 @@
 <%
     DecimalFormat df = new DecimalFormat("#.0");
     List<Purchase> acquisti = (List<Purchase>) session.getAttribute("Acquisti");
-    for(int i = 0; i < acquisti.size(); i++){
-        Purchase acquisto = acquisti.get(i);
-        String totaleFormattato = df.format(acquisto.getPrezzoTotale());
-        double totale = Double.parseDouble(totaleFormattato.replace(',', '.'));
-        acquisti.get(i).setPrezzoTotale(totale);
+    if(acquisti == null){
+        session.setAttribute("Acquisti", acquisti);
+    } else {
+        for(int i = 0; i < acquisti.size(); i++){
+            Purchase acquisto = acquisti.get(i);
+            String totaleFormattato = df.format(acquisto.getPrezzoTotale());
+            double totale = Double.parseDouble(totaleFormattato.replace(',', '.'));
+            acquisti.get(i).setPrezzoTotale(totale);
+        }
+        session.setAttribute("Acquisti", acquisti);
     }
-    session.setAttribute("Acquisti", acquisti);
 %>
 
 <html>
