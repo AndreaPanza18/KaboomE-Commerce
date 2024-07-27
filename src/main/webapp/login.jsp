@@ -53,7 +53,7 @@
         <h1>Accedi</h1>
         <div class="input-box">
             <label>Email</label>
-            <input type="email" class="form-control" name="email" pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
+            <input type="email" class="form-control" name="email" pattern="/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
             <label>Password</label>
             <input type="password" class="form-control" name="password" required>
         </div>
