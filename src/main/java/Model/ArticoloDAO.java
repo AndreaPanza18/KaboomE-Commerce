@@ -150,6 +150,34 @@ public class ArticoloDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Articolo> getAllArticoli(){
+        String query = "SELECT * FROM Articolo";
+        List<Articolo> articoli = new ArrayList<>();
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                Articolo articolo = new Articolo();
+                articolo.setCodice(rs.getLong("Codice_A_Barre"));
+                articolo.setNome(rs.getString("Nome"));
+                articolo.setPrezzo(rs.getDouble("Prezzo"));
+                articolo.setData_uscita(rs.getDate("DDU").toLocalDate());
+                articolo.setDescrizione(rs.getString("Descrizione"));
+                articolo.setPersonaggio(rs.getString("Personaggio"));
+                articolo.setMateriale(rs.getString("Materiale"));
+                articolo.setId_Autore(rs.getLong("A_ID_Autore"));
+                articolo.setUrlImmagine(rs.getString("Url_immagine"));
+                articoli.add(articolo);
+            }
+
+            return articoli;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 
