@@ -5,6 +5,9 @@
 <%@ page import="java.io.BufferedWriter" %>
 <%@ page import="java.io.FileWriter" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="Model.Purchase" %>
+<%@ page import="java.util.Comparator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -22,6 +25,13 @@
     } catch (IOException e) {
         throw new RuntimeException(e);
     }
+
+    Collections.sort(allArticoli, new Comparator<Articolo>() {
+        @Override
+        public int compare(Articolo a1, Articolo a2) {
+            return String.CASE_INSENSITIVE_ORDER.compare(a1.getNome(), a2.getNome());
+        }
+    });
     session.setAttribute("allArticoli", allArticoli);
 %>
 
@@ -79,6 +89,38 @@
                 session.setAttribute("ultimeUscite", articoli);
             %>
             <c:forEach items="${ultimeUscite}" var="articolo">
+                <div class="item">
+                    <a href="product-page.jsp?codice=${articolo.codice}">
+                        <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">
+                    </a>
+                    <h3>${articolo.nome}</h3>
+                    <p>${articolo.prezzo}0 €</p>
+                    <form action="AddToCart" method="post" class="item-form">
+                        <input type="hidden" name="codice" value="${articolo.codice}">
+                        <button type="submit" class="btn-add-cart">Aggiungi al Carrello</button>
+                    </form>
+                    <c:choose>
+                        <c:when test="${not empty Wishlist && fn:contains(codiciWishlist, articolo.codice)}">
+                            <form action="RemoveFromWishlist" method="post" class="item-form">
+                                <input type="hidden" name="codice" value="${articolo.codice}">
+                                <button type="submit" class="btn-remove-wishlist">Rimuovi dalla Wishlist</button>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="AddToWishlist" method="post" class="item-form">
+                                <input type="hidden" name="codice" value="${articolo.codice}">
+                                <button type="submit" class="btn-add-wishlist">Aggiungi alla Wishlist</button>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="all-articoli">
+        <h2>Tutti i nostri Articoli</h2>
+        <div class="lista-articoli">
+            <c:forEach items="${allArticoli}" var="articolo">
                 <div class="item">
                     <a href="product-page.jsp?codice=${articolo.codice}">
                         <img src="${articolo.urlImmagine}" alt="${articolo.nome}" class="item-img">

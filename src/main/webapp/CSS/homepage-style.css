@@ -36,6 +36,18 @@ body::before {
     text-shadow: 2px 2px 4px #000000;
 }
 
+.all-articoli {
+    padding: 20px;
+    text-align: center;
+}
+
+.all-articoli h2 {
+    font-size: 34px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
 .lista-articoli {
     display: flex;
     flex-wrap: wrap;
@@ -135,6 +147,10 @@ body::before {
 
 @media (max-width: 768px) {
     .ultime-uscite {
+        padding: 10px;
+    }
+
+    .all-articoli {
         padding: 10px;
     }
 
