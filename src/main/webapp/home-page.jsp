@@ -2,9 +2,28 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Articolo" %>
 <%@ page import="Model.User" %>
+<%@ page import="java.io.BufferedWriter" %>
+<%@ page import="java.io.FileWriter" %>
+<%@ page import="java.io.IOException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%
+    ArticoloDAO getArticoli = new ArticoloDAO();
+    List<Articolo> allArticoli = getArticoli.getAllArticoli();
+
+    String path = application.getRealPath("/suggerimenti.txt");
+    try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+        for(Articolo a : allArticoli){
+            writer.write(a.getNome());
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+    session.setAttribute("allArticoli", allArticoli);
+%>
 
 <!DOCTYPE html>
 <html lang="en">
