@@ -3,6 +3,8 @@ package Model;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PurchaseDAO {
@@ -67,8 +69,54 @@ public class PurchaseDAO {
                 acquisti.add(acquisto);
             }
 
+            Collections.sort(acquisti, new Comparator<Purchase>() {
+                @Override
+                public int compare(Purchase a1, Purchase a2) {
+                    return Double.compare(a2.getIdAcquisto(), a1.getIdAcquisto());
+                }
+            });
+
             return acquisti;
         } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Purchase> getAllAcquisti(){
+        String query  = "SELECT * FROM Acquisti";
+        List<Purchase> acquisti = new ArrayList<>();
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Purchase acquisto = new Purchase();
+                acquisto.setIdAcquisto(rs.getLong("ID_Acquisto"));
+                acquisto.setIdUtente(rs.getLong("U_ID_Utente"));
+                acquisto.setDataAcquisto(rs.getDate("Data_Acquisto").toLocalDate());
+                acquisto.setPrezzoTotale(rs.getDouble("Prezzo_Totale"));
+
+                List<Articolo> articoli;
+                ArticoloDAO getArticolo = new ArticoloDAO();
+                articoli = acquisto.getArticoli();
+                Articolo articolo = getArticolo.getArticoloById(rs.getLong("A_Codice_A_Barre"));
+                articolo.setQuantita(rs.getInt("Quantità"));
+                articoli.add(articolo);
+
+                acquisto.setArticoli(articoli);
+                acquisti.add(acquisto);
+            }
+
+            Collections.sort(acquisti, new Comparator<Purchase>() {
+                @Override
+                public int compare(Purchase a1, Purchase a2) {
+                    return Double.compare(a2.getIdAcquisto(), a1.getIdAcquisto());
+                }
+            });
+
+            return acquisti;
+        } catch(SQLException e){
             throw new RuntimeException(e);
         }
     }

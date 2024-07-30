@@ -14,11 +14,11 @@
 %>
 
 <%
-    DecimalFormat df = new DecimalFormat("#.0");
     List<Purchase> acquisti = (List<Purchase>) session.getAttribute("Acquisti");
     if(acquisti == null){
         session.setAttribute("Acquisti", acquisti);
     } else {
+        DecimalFormat df = new DecimalFormat("#.0");
         for(int i = 0; i < acquisti.size(); i++){
             Purchase acquisto = acquisti.get(i);
             String totaleFormattato = df.format(acquisto.getPrezzoTotale());
@@ -59,7 +59,7 @@
             <button type="submit" class="cta">Logout</button>
         </form>
         <c:if test="${permission}">
-            <a href="#">
+            <a href="admin-page.jsp">
                 <button>Admin</button>
             </a>
         </c:if>

@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:500&display=swap');
+
+body {
+    min-height: 100vh;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Prompt', sans-serif;
+    background-image: url("../images/sfondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.acquisti {
+    padding: 20px;
+    margin-top: 120px;
+}
+
+.acquisti h2 {
+    font-size: 34px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.acquisti h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.acquisti table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.acquisti th, .acquisti td {
+    padding: 12px;
+    text-align: left;
+}
+
+.acquisti th {
+    background-color: #1877f2;
+    color: #ffffff;
+}
+
+.acquisti td {
+    background-color: #f9f9f9;
+}
+
+.acquisti a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.acquisti a:hover {
+    text-decoration: underline;
+}
+
+.acquisti tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.acquisti tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.acquisti img {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.acquisti tr:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+
+    .acquisti table {
+        font-size: 14px;
+    }
+
+    .acquisti th, .acquisti td {
+        padding: 8px;
+    }
+
+    .acquisti img {
+        width: 60px;
+    }
+}

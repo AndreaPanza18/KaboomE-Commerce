@@ -1,9 +1,6 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AutoreDAO {
     public Autore getAutoreFromId(long idAutore){
@@ -25,5 +22,33 @@ public class AutoreDAO {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public void createAutore(Autore autore){
+        String query = "INSERT INTO Autore (ID_Autore, Colorista, Scrittore, Disegnatore) VALUES (?, ?, ?, ?)";
+
+        try (Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setLong(1, autore.getCodice());
+            if(autore.getColorista() != null){
+                ps.setString(2, autore.getColorista());
+            } else {
+                ps.setNull(2, Types.VARCHAR);
+            }
+            if(autore.getScrittore() != null){
+                ps.setString(3, autore.getScrittore());
+            } else {
+                ps.setNull(3, Types.VARCHAR);
+            }
+            if(autore.getDisegnatore() != null){
+                ps.setString(4, autore.getDisegnatore());
+            } else {
+                ps.setNull(4, Types.VARCHAR);
+            }
+
+            ps.executeUpdate();
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }

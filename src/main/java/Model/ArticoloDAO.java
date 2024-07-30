@@ -1,9 +1,6 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -71,6 +68,7 @@ public class ArticoloDAO {
                     articolo.setDescrizione(rs.getString("Descrizione"));
                     articolo.setMateriale(rs.getString("Materiale"));
                     articolo.setUrlImmagine(rs.getString("Url_immagine"));
+                    System.out.println(articolo.getNome());
                     articoli.add(articolo);
                 }
                 return articoli;
@@ -183,6 +181,38 @@ public class ArticoloDAO {
             });
 
             return articoli;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void addArticolo(Articolo articolo){
+        String query = "INSERT INTO Articolo (Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio, Materiale, A_ID_Autore, Url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setLong(1, articolo.getCodice());
+            ps.setString(2, articolo.getNome());
+            ps.setDouble(3, articolo.getPrezzo());
+            ps.setDate(4, Date.valueOf(articolo.getData_uscita()));
+            ps.setString(5, articolo.getDescrizione());
+            if (articolo.getPersonaggio() == null){
+                ps.setString(6, articolo.getPersonaggio());
+            } else {
+                ps.setNull(6, Types.VARCHAR);
+            }
+            if (articolo.getMateriale() == null){
+                ps.setString(7, articolo.getMateriale());
+            } else {
+                ps.setNull(7, Types.VARCHAR);
+            }
+            if (articolo.getId_Autore() != 0) {
+                ps.setLong(8, articolo.getId_Autore());
+            } else {
+                ps.setNull(8, Types.BIGINT);
+            }
+            ps.setString(9, articolo.getUrlImmagine());
+            ps.executeUpdate();
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
