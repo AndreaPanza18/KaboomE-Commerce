@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ArticoloDAO {
@@ -172,6 +174,13 @@ public class ArticoloDAO {
                 articolo.setUrlImmagine(rs.getString("Url_immagine"));
                 articoli.add(articolo);
             }
+
+            Collections.sort(articoli, new Comparator<Articolo>() {
+                @Override
+                public int compare(Articolo a1, Articolo a2) {
+                    return String.CASE_INSENSITIVE_ORDER.compare(a1.getNome(), a2.getNome());
+                }
+            });
 
             return articoli;
         } catch (SQLException e){

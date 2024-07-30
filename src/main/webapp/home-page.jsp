@@ -5,9 +5,6 @@
 <%@ page import="java.io.BufferedWriter" %>
 <%@ page import="java.io.FileWriter" %>
 <%@ page import="java.io.IOException" %>
-<%@ page import="java.util.Collections" %>
-<%@ page import="Model.Purchase" %>
-<%@ page import="java.util.Comparator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -26,12 +23,6 @@
         throw new RuntimeException(e);
     }
 
-    Collections.sort(allArticoli, new Comparator<Articolo>() {
-        @Override
-        public int compare(Articolo a1, Articolo a2) {
-            return String.CASE_INSENSITIVE_ORDER.compare(a1.getNome(), a2.getNome());
-        }
-    });
     session.setAttribute("allArticoli", allArticoli);
 %>
 

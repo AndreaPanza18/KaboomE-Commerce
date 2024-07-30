@@ -117,6 +117,10 @@ body::before {
     margin-bottom: 10px;
 }
 
+.btn-remove {
+    margin-bottom: 10px;
+}
+
 .btn-add-wishlist {
     background-color: #1877f2;
 }
