@@ -49,12 +49,14 @@ public class BuyFromCart extends HttpServlet {
             });
 
             wishlist = getWishlist.getWishlist(user.getId_Utente());
-            List<Long> codici = new ArrayList<>();
-            for(int i = 0; i < wishlist.size(); i++){
-                codici.add(wishlist.get(i).getCodice());
+            if(wishlist != null) {
+                List<Long> codici = new ArrayList<>();
+                for (int i = 0; i < wishlist.size(); i++) {
+                    codici.add(wishlist.get(i).getCodice());
+                }
+                session.setAttribute("codiciWishlist", codici);
             }
 
-            session.setAttribute("codiciWishlist", codici);
             session.setAttribute("Wishlist", wishlist);
             session.setAttribute("Acquisti", acquisti);
             session.removeAttribute("Cart");

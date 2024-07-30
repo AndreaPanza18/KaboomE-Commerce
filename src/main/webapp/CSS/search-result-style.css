@@ -36,6 +36,13 @@ body::before {
     text-shadow: 2px 2px 4px #000000;
 }
 
+.articoli-results h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
 .lista-articoli {
     display: flex;
     flex-wrap: wrap;
@@ -85,6 +92,7 @@ body::before {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-shadow: none;
 }
 
 .item p {

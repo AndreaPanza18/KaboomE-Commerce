@@ -1,4 +1,3 @@
-<%@ page import="Model.ArticoloDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.Articolo" %>
 <%@ page import="java.text.DecimalFormat" %>
@@ -9,16 +8,22 @@
 <%
     List<Articolo> cart = (List<Articolo>) session.getAttribute("Cart");
     if(cart == null){
-        session.setAttribute("subTotal", 0.00);
+        String tot = "0,0";
+        session.setAttribute("subTotal", tot);
     } else {
         double totale = 0;
         for(Articolo a : cart){
             totale += a.getQuantita() * a.getPrezzo();
         }
 
-        DecimalFormat df = new DecimalFormat("#.0");
-        String totaleFormattato = df.format(totale);
-        session.setAttribute("subTotal", totaleFormattato);
+        if(totale <= 0){
+            String tot = "0,0";
+            session.setAttribute("subTotal", tot);
+        } else {
+            DecimalFormat df = new DecimalFormat("#.0");
+            String totaleFormattato = df.format(totale);
+            session.setAttribute("subTotal", totaleFormattato);
+        }
     }
 %>
 
