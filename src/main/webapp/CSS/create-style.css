@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:500>');
-
 body {
     min-height: 100vh;
     background: #FFFFFF;
     display: flex;
+    flex-direction: column;
     font-family: 'Prompt', sans-serif;
     background-image: url("../images/sfondo.jpg");
     background-size: cover;
@@ -12,11 +11,12 @@ body {
     background-position: center;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -30,15 +30,18 @@ body::before {
     width: 500px;
     max-width: 90%;
     margin-top: 150px;
+    padding-bottom: 20px;
 }
 
 .container form {
     width: 100%;
-    height: 70%;
     padding: 20px;
     background: #1877f2;
     border-radius: 4px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .container form h1 {
@@ -52,12 +55,11 @@ body::before {
     height: 40px;
     background: #FFFFFF;
     border: 1px solid silver;
-    margin: 10px 0 18px 0;
+    margin: 10px 0 10px 0;
     padding: 0 10px;
 }
 
 .container form .btn {
-    margin-left: 38%;
     width: 120px;
     height: 34px;
     border: none;
@@ -72,14 +74,40 @@ body::before {
     border-radius: 50px;
     line-height: 16px;
     transition: all 0.3s ease 0s;
+    align-self: center;
 }
 
 .container form .btn:hover {
     background-color: rgba(245, 195, 59, 0.8);
 }
 
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
 .input-box label {
     color: #e9e9e9;
+}
+
+.input-box .form-control {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    display: none;
+    background-color: #e74c3c;
+    color: #fff;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-shadow: none;
+    font-size: 0.9em;
+}
+
+.error-message.active {
+    display: block;
 }
 
 .login-register a, p {

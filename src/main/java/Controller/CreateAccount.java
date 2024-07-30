@@ -18,9 +18,6 @@ public class CreateAccount extends HttpServlet {
 
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
         User user = new User();
         UserDAO newUser = new UserDAO();
         user.setNome(request.getParameter("nome"));
@@ -32,12 +29,7 @@ public class CreateAccount extends HttpServlet {
             HttpSession session = request.getSession(true);
             user = newUser.loginUser(request.getParameter("email"), request.getParameter("password"));
             session.setAttribute("User", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home-page.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            out.println("<html><body>");
-            out.println("<p>ERROR: INVALID INPUT</p>");
-            out.println("</html></body>");
+            response.sendRedirect("create-success.jsp");
         }
    }
 }
