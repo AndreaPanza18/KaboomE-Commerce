@@ -27,71 +27,97 @@ body::before {
     z-index: -1;
 }
 
-.aggiungi {
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 120px;
-    margin-bottom: 20px;
+.elimina {
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
 }
 
-.aggiungi h2 {
+.elimina h2 {
     font-size: 34px;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 20px;
     text-align: center;
-    text-shadow: 2px 2px 4px #ffffff;
+    text-shadow: 2px 2px 4px #000000;
 }
 
-.aggiungi .input {
-    display: flex;
-    flex-direction: column;
+.elimina h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
 }
 
-.aggiungi .input label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.aggiungi .input input[type="text"],
-.aggiungi .input input[type="number"],
-.aggiungi .input input[type="date"] {
-    padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 5px;
+.elimina table {
     width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
+    border-collapse: collapse;
+    margin: 0 auto;
 }
 
-.aggiungi .input .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #28a745;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.elimina .col-limited-width {
+    max-width: 500px;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
 }
 
-.aggiungi .input .btn:hover {
-    background-color: #218838;
+.elimina th, .elimina td {
+    padding: 12px;
+    text-align: left;
 }
 
-.error-message {
+.elimina th {
+    background-color: #1877f2;
+    color: #ffffff;
+}
+
+.elimina td {
+    background-color: #f9f9f9;
+}
+
+.elimina a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.elimina a:hover {
+    text-decoration: underline;
+}
+
+.elimina tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.elimina tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.elimina img {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.elimina-form button {
     background-color: #e74c3c;
     color: #ffffff;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    text-shadow: none;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 17px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.elimina-form button:hover {
+    background-color: #c0392b;
+}
+
+.elimina tr:hover {
+    background-color: #e0e0e0;
 }
 
 .popup-container {
@@ -145,4 +171,19 @@ body::before {
 
 .popup-message button:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+
+    .elimina table {
+        font-size: 14px;
+    }
+
+    .elimina th, .elimina td {
+        padding: 8px;
+    }
+
+    .elimina img {
+        width: 60px;
+    }
 }

@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ public class AddArticolo extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession(true);
         request.setAttribute("addError", null);
 
         String codice = request.getParameter("codice");
@@ -73,7 +75,7 @@ public class AddArticolo extends HttpServlet {
 
         AutoreDAO getAutore = new AutoreDAO();
         long idAutore = 0;
-        if (!idAutoreStr.isEmpty()) {
+        if (idAutoreStr != null) {
             idAutore = Long.parseLong(idAutoreStr);
         }
 
@@ -99,8 +101,12 @@ public class AddArticolo extends HttpServlet {
         }
 
         ArticoloDAO getArticolo = new ArticoloDAO();
-        getArticolo.addArticolo(articolo);
+        if(getArticolo.addArticolo(articolo)){
+            session.setAttribute("successMessage", "Articolo aggiunto con successo!");
+        } else {
+            session.setAttribute("errorMessage", "Errore durante l'aggiunta dell'articolo.");
+        }
 
-        response.sendRedirect("admin-page.jsp");
+        response.sendRedirect("aggiungi-articoli.jsp");
     }
 }

@@ -1,5 +1,5 @@
-<%@ page import="Model.Articolo" %>
 <%@ page import="Model.ArticoloDAO" %>
+<%@ page import="Model.Articolo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.io.BufferedWriter" %>
 <%@ page import="java.io.FileWriter" %>
@@ -30,10 +30,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aggiungi Articoli</title>
+    <title>Elimina Articoli</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
-    <link rel="stylesheet" href="CSS/aggiungi-articoli-style.css">
+    <link rel="stylesheet" href="CSS/elimina-articoli-style.css">
     <script src="JS/search.js" defer></script>
 </head>
 <body>
@@ -70,41 +70,39 @@
         <a href="elimina-articoli.jsp">Elimina Articoli</a>
         <a href="see-utenti.jsp">Utenti</a>
     </div>
-    <div class="aggiungi">
-        <h2>Inserisci i dati dell'articolo da aggiungere</h2>
-        <c:if test="${not empty addError}">
-            <div class="error-message">
-                <p>${addError}</p>
-            </div>
-        </c:if>
-        <form action="AddArticolo" method="post" class="input">
-            <label>Codice a barre </label>
-            <input type="text" name="codice" required><br>
-            <label>Nome </label>
-            <input type="text" name="nome" required><br>
-            <label>Prezzo </label>
-            <input type="number" step="0.01" name="prezzo" required><br>
-            <label>Data di uscita </label>
-            <input type="date" name="dataUscita" required><br>
-            <label>Descrizione </label>
-            <input type="text" name="descrizione" required><br>
-            <lable>I prossimi campi non compilarli tutti: solo quelli necessari per l'articolo</lable>
-            <label>Personaggio action figure </label>
-            <input type="text" name="personaggio"><br>
-            <label>Materiale carta </label>
-            <input type="text" name="materiale"><br>
-            <label>ID Autori </label>
-            <input type="number" name="idAutore"><br>
-            <label>Colorista </label>
-            <input type="text" name="colorista"><br>
-            <label>Scrittore </label>
-            <input type="text" name="scrittore"><br>
-            <label>Disegnatore </label>
-            <input type="text" name="disegnatore"><br>
-            <label>URL Immagine </label>
-            <input type="text" name="urlImmagine" required><br><br>
-            <input type="submit" value="Add" class="btn">
-        </form>
+    <div class="elimina">
+        <h2>Tutti gli articoli presenti nel database</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Nome Articolo</th>
+                <th>Immagine</th>
+                <th>Descrizione</th>
+                <th>Data di Uscita</th>
+                <th>Prezzo</th>
+                <th>Elimina</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="articolo" items="${sessionScope.allArticoli}">
+                <tr>
+                    <td><c:out value="${articolo.codice}" /></td>
+                    <td><a href="product-page.jsp?codice=${articolo.codice}"><c:out value="${articolo.nome}" /></a></td>
+                    <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>
+                    <td class="col-limited-width"><c:out value="${articolo.descrizione}" /></td>
+                    <td><c:out value="${articolo.data_uscita}" /></td>
+                    <td><c:out value="${articolo.prezzo}" /></td>
+                    <td>
+                        <form action="DeleteArticolo" method="post" class="elimina-form">
+                            <input type="hidden" name="codice" value="${articolo.codice}" />
+                            <button type="submit">Elimina</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
     <div id="popup" class="popup-container">
         <div class="popup-message">

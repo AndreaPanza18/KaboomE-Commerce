@@ -64,7 +64,7 @@
 <main>
     <div class="categorie">
         <a href="aggiungi-articoli.jsp">Aggiungi Articoli</a>
-        <a href="#">Elimina Articoli</a>
+        <a href="elimina-articoli.jsp">Elimina Articoli</a>
         <a href="see-utenti.jsp">Utenti</a>
     </div>
     <div class="acquisti">
@@ -77,6 +77,7 @@
                 <thead>
                 <tr>
                     <th>ID Utente</th>
+                    <th>Codice Acquisto</th>
                     <th>Data Acquisto</th>
                     <th>Prezzo Totale Acquisto</th>
                     <th>Immagine</th>
@@ -90,6 +91,7 @@
                     <c:forEach var="articolo" items="${acquisto.articoli}">
                         <tr>
                             <td><c:out value="${acquisto.idUtente}" /></td>
+                            <td><c:out value="${acquisto.idAcquisto}" /></td>
                             <td><c:out value="${acquisto.dataAcquisto}" /></td>
                             <td><c:out value="${acquisto.prezzoTotale}0 €" /></td>
                             <td><img src="${articolo.urlImmagine}" alt="${articolo.nome}" style="width: 100px;" /></td>

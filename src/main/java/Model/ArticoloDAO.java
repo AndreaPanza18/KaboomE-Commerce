@@ -186,7 +186,7 @@ public class ArticoloDAO {
         }
     }
 
-    public void addArticolo(Articolo articolo){
+    public boolean addArticolo(Articolo articolo){
         String query = "INSERT INTO Articolo (Codice_A_Barre, Nome, Prezzo, DDU, Descrizione, Personaggio, Materiale, A_ID_Autore, Url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection con = ConPool.getConnection()){
@@ -196,12 +196,12 @@ public class ArticoloDAO {
             ps.setDouble(3, articolo.getPrezzo());
             ps.setDate(4, Date.valueOf(articolo.getData_uscita()));
             ps.setString(5, articolo.getDescrizione());
-            if (articolo.getPersonaggio() == null){
+            if (articolo.getPersonaggio() != null){
                 ps.setString(6, articolo.getPersonaggio());
             } else {
                 ps.setNull(6, Types.VARCHAR);
             }
-            if (articolo.getMateriale() == null){
+            if (articolo.getMateriale() != null){
                 ps.setString(7, articolo.getMateriale());
             } else {
                 ps.setNull(7, Types.VARCHAR);
@@ -213,7 +213,21 @@ public class ArticoloDAO {
             }
             ps.setString(9, articolo.getUrlImmagine());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean deleteArticolo(long codice){
+        String query = "DELETE FROM Articolo WHERE Codice_A_Barre = ?";
+
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setLong(1, codice);
+            ps.executeUpdate();
+            return true;
+        } catch(SQLException e){
             throw new RuntimeException(e);
         }
     }
