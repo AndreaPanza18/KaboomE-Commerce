@@ -59,6 +59,11 @@
                 <button>Profilo</button>
             </a>
         </c:if>
+        <c:if test="${permission}">
+            <a href="admin-page.jsp">
+                <button>Admin</button>
+            </a>
+        </c:if>
     </div>
 </header>
 <main>

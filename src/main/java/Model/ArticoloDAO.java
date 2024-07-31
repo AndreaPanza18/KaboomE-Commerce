@@ -220,12 +220,29 @@ public class ArticoloDAO {
     }
 
     public boolean deleteArticolo(long codice){
-        String query = "DELETE FROM Articolo WHERE Codice_A_Barre = ?";
+        String acquisti = "DELETE FROM Acquisti WHERE A_Codice_A_Barre = ?";
+        String wishlist = "DELETE FROM Wishlist WHERE A_Codice_A_Barre = ?";
+        String carrello = "DELETE FROM Carrello WHERE A_Codice_A_Barre = ?";
+        String articolo = "DELETE FROM Articolo WHERE Codice_A_Barre = ?";
 
         try(Connection con = ConPool.getConnection()){
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setLong(1, codice);
-            ps.executeUpdate();
+            PreparedStatement psAcquisti = con.prepareStatement(acquisti);
+            PreparedStatement psWishlist = con.prepareStatement(wishlist);
+            PreparedStatement psCarrello = con.prepareStatement(carrello);
+            PreparedStatement psArticolo = con.prepareStatement(articolo);
+
+            psAcquisti.setLong(1, codice);
+            psAcquisti.executeUpdate();
+
+            psWishlist.setLong(1, codice);
+            psWishlist.executeUpdate();
+
+            psCarrello.setLong(1, codice);
+            psCarrello.executeUpdate();
+
+            psArticolo.setLong(1, codice);
+            psArticolo.executeUpdate();
+
             return true;
         } catch(SQLException e){
             throw new RuntimeException(e);
