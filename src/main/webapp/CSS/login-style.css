@@ -7,7 +7,6 @@
 }
 
 body {
-    min-height: 100vh;
     background: #FFFFFF;
     display: flex;
     font-family: 'Prompt', sans-serif;
@@ -108,8 +107,15 @@ body::before {
     text-shadow: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 877px) {
     .container {
-        margin-top: 80px;
+        margin-top: 140px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 600px){
+    .container {
+        width: 300px;
     }
 }

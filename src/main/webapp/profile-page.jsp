@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="CSS/categories-style.css">
     <link rel="stylesheet" href="CSS/profile-page-style.css">
     <script src="JS/search.js" defer></script>
+    <script src="JS/navbar.js" defer></script>
 </head>
 <body>
 <header>
@@ -51,6 +52,20 @@
             <div class="suggestions" id="results"></div>
         </div>
     </form>
+    <ul class="sidebar">
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+        <li><a href="home-page.jsp">Homepage</a></li>
+        <li><a href="cart.jsp">Carrello</a></li>
+        <li>
+            <form id="logout-form" action="Logout" method="post" style="display: none;"></form>
+            <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+        </li>
+        <li>
+            <c:if test="${permission}">
+                <a href="admin-page.jsp">Admin</a>
+            </c:if>
+        </li>
+    </ul>
     <div class="cta">
         <a href="cart.jsp">
             <button>Carrello</button>
@@ -63,6 +78,9 @@
                 <button>Admin</button>
             </a>
         </c:if>
+    </div>
+    <div onclick="showSidebar()" class="menu-button">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
     </div>
 </header>
 <div class="categorie">

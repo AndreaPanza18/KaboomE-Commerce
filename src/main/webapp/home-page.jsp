@@ -55,11 +55,12 @@
         <li><a href="home-page.jsp">Homepage</a></li>
         <li><a href="cart.jsp">Carrello</a></li>
         <li><c:if test="${empty User}">
-            <a href="login.jsp">Login</a>
-        </c:if>
+                <a href="login.jsp">Login</a>
+            </c:if>
             <c:if test="${not empty User}">
                 <a href="profile-page.jsp">Profilo</a>
-            </c:if></li>
+            </c:if>
+        </li>
     </ul>
     <div class="cta">
         <a href="cart.jsp">

@@ -20,7 +20,7 @@ public class ToggleAdmin extends HttpServlet {
 
         UserDAO toggleUser = new UserDAO();
         if(toggleUser.toggleAdmin(codice)){
-            session.setAttribute("successMessage", "Permessi assegnati con successo!");
+            session.setAttribute("successMessage", "Permessi aggiornati con successo!");
         } else {
             session.setAttribute("errorMessage", "Errore durante l'assegnazione dei permessi");
         }
