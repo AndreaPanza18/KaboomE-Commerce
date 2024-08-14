@@ -72,6 +72,10 @@ public class UserDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
+                if(rs.getLong("ID_Utente") == 1){
+                    continue;
+                }
+
                 User utente = new User();
                 utente.setId_Utente(rs.getLong("ID_Utente"));
                 utente.setNome(rs.getString("Nome"));
