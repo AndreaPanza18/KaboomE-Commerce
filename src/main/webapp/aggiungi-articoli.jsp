@@ -65,16 +65,12 @@
         <a href="cart.jsp">
             <button>Carrello</button>
         </a>
-        <c:if test="${empty User}">
-            <a href="login.jsp">
-                <button>Login</button>
-            </a>
-        </c:if>
-        <c:if test="${not empty User}">
-            <a href="profile-page.jsp">
-                <button>Profilo</button>
-            </a>
-        </c:if>
+        <a href="profile-page.jsp">
+            <button>Profilo</button>
+        </a>
+        <a href="admin-page.jsp">
+            <button>Admin</button>
+        </a>
     </div>
     <div onclick="showSidebar()" class="menu-button">
         <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
