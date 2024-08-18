@@ -40,8 +40,10 @@ public class RemoveFromWishlist extends HttpServlet {
             session.setAttribute("Wishlist", wishlist);
 
             if(originPage != null) {
+                session.setAttribute("notification", "Articolo rimosso dalla wishlist");
                 response.sendRedirect(originPage);
             } else {
+                session.setAttribute("notification", "Articolo rimosso dalla wishlist");
                 response.sendRedirect("home-page.jsp");
             }
         }

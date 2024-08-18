@@ -87,6 +87,25 @@
         <a href="articoli-categoria.jsp?categoria=carte">Carte</a>
         <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
     </div>
+    <c:if test="${not empty notification}">
+        <div id="notificationMessage" class="fade-in-out">
+                ${notification}
+        </div>
+        <script>
+            document.getElementById('notificationMessage').classList.add('show');
+
+            setTimeout(function() {
+                document.getElementById('notificationMessage').classList.remove('show');
+            }, 5000);
+
+            setTimeout(function() {
+                document.getElementById('notificationMessage').style.display = 'none';
+            }, 5500);
+        </script>
+        <%
+            session.setAttribute("notification", null);
+        %>
+    </c:if>
     <div class="ultime-uscite">
         <h2>Ultime Uscite</h2>
         <div class="lista-articoli">

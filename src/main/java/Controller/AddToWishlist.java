@@ -44,8 +44,10 @@ public class AddToWishlist extends HttpServlet {
                 session.setAttribute("Wishlist", wishlist);
 
                 if(originPage != null) {
+                    session.setAttribute("notification", "Articolo aggiunto alla wishlist");
                     response.sendRedirect(originPage);
                 } else {
+                    session.setAttribute("notification", "Articolo aggiunto alla wishlist");
                     response.sendRedirect("home-page.jsp");
                 }
             }

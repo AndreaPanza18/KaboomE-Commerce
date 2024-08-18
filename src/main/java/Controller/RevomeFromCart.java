@@ -57,6 +57,7 @@ public class RevomeFromCart extends HttpServlet {
             }
             session.setAttribute("Cart", cartList);
         }
+        session.setAttribute("notification", "Articolo rimosso dal carrello");
         response.sendRedirect("cart.jsp");
     }
 }

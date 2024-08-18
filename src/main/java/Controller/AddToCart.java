@@ -77,8 +77,10 @@ public class AddToCart extends HttpServlet {
             }
         }
         if(originPage != null) {
+            session.setAttribute("notification", "Articolo aggiunto al carrello");
             response.sendRedirect(originPage);
         } else {
+            session.setAttribute("notification", "Articolo aggiunto al carrello");
             response.sendRedirect("home-page.jsp");
         }
     }

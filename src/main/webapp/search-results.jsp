@@ -66,6 +66,25 @@
     <a href="articoli-categoria.jsp?categoria=action-figure">Action Figure</a>
 </div>
 <main>
+    <c:if test="${not empty notification}">
+        <div id="notificationMessage" class="fade-in-out">
+                ${notification}
+        </div>
+        <script>
+            document.getElementById('notificationMessage').classList.add('show');
+
+            setTimeout(function() {
+                document.getElementById('notificationMessage').classList.remove('show');
+            }, 5000);
+
+            setTimeout(function() {
+                document.getElementById('notificationMessage').style.display = 'none';
+            }, 5500);
+        </script>
+        <%
+            session.setAttribute("notification", null);
+        %>
+    </c:if>
     <div class="articoli-results">
         <h2>Risultati della Ricerca</h2>
         <div class="lista-articoli">
