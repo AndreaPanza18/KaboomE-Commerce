@@ -167,11 +167,14 @@ button.login-button {
 
 .sidebar li {
     width: 100%;
+    list-style: none;
+    padding-left: 3px;
 }
 
 .sidebar a {
     width: 100%;
 }
+
 
 .menu-button {
     display: none;
