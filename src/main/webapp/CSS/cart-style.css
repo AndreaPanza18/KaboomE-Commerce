@@ -214,3 +214,18 @@ body::before {
         height: auto;
     }
 }
+
+@media (max-width: 410px){
+    .buttons button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 335px){
+    .buttons button {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
+
