@@ -30,10 +30,12 @@ public class BuyFromCart extends HttpServlet {
             List<Articolo> cart = (List<Articolo>) session.getAttribute("Cart");
 
             WishlistDAO getWishlist = new WishlistDAO();
-            for(Articolo a: cart){
-                for(Articolo w : wishlist){
-                    if(a.getCodice() == w.getCodice()){
-                        getWishlist.removeFromWishlist(user.getId_Utente(), a.getCodice());
+            if(wishlist != null) {
+                for (Articolo a : cart) {
+                    for (Articolo w : wishlist) {
+                        if (a.getCodice() == w.getCodice()) {
+                            getWishlist.removeFromWishlist(user.getId_Utente(), a.getCodice());
+                        }
                     }
                 }
             }
