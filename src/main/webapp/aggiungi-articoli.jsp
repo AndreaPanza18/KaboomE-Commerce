@@ -60,6 +60,9 @@
                 <a href="profile-page.jsp">Profilo</a>
             </c:if>
         </li>
+        <li>
+            <a href="admin-page.jsp">Admin</a>
+        </li>
     </ul>
     <div class="cta">
         <a href="cart.jsp">

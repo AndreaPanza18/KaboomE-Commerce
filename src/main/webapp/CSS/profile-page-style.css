@@ -262,13 +262,19 @@ body::before {
 
     .acquisti table {
         font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
     }
 
     .acquisti th, .acquisti td {
         padding: 8px;
+        text-align: left;
+        white-space: nowrap;
     }
 
     .acquisti img {
         width: 60px;
     }
 }
+

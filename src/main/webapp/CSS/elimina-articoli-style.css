@@ -177,10 +177,15 @@ body::before {
 
     .elimina table {
         font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
     }
 
     .elimina th, .elimina td {
         padding: 8px;
+        text-align: left;
+        white-space: nowrap;
     }
 
     .elimina img {

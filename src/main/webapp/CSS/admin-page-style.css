@@ -99,10 +99,14 @@ body::before {
 
     .acquisti table {
         font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
     .acquisti th, .acquisti td {
         padding: 8px;
+        white-space: nowrap; 
     }
 
     .acquisti img {
