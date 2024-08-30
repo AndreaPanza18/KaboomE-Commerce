@@ -10,6 +10,7 @@ body {
     background-position: center;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Previene lo scroll della pagina principale */
 }
 
 body::before {
@@ -28,6 +29,8 @@ body::before {
     text-align: center;
     margin-top: 120px;
     padding-bottom: 100px;
+    max-height: calc(100vh - 180px); /* Altezza massima per prevenire overflow */
+    overflow-y: auto; /* Scroll verticale */
 }
 
 .cart-list h2 {
@@ -203,6 +206,8 @@ body::before {
 @media (max-width: 768px) {
     .cart-list {
         padding: 10px;
+        max-height: calc(100vh - 220px); /* Mantiene lo scroll anche su dispositivi piccoli */
+        overflow-y: auto;
     }
 
     .lista-articoli {
@@ -215,17 +220,16 @@ body::before {
     }
 }
 
-@media (max-width: 410px){
+@media (max-width: 410px) {
     .buttons button {
         padding: 8px 12px;
         font-size: 14px;
     }
 }
 
-@media (max-width: 335px){
+@media (max-width: 335px) {
     .buttons button {
         padding: 6px 8px;
         font-size: 10px;
     }
 }
-
