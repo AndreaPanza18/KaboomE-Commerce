@@ -206,7 +206,7 @@ body::before {
 @media (max-width: 768px) {
     .cart-list {
         padding: 10px;
-        max-height: calc(100vh - 220px);
+        max-height: calc(100vh - 180px);
         overflow-y: auto;
     }
 
