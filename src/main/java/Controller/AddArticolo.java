@@ -87,7 +87,7 @@ public class AddArticolo extends HttpServlet {
         articolo.setDescrizione(descrizione);
         articolo.setPersonaggio(personaggio);
         articolo.setMateriale(materiale);
-        articolo.setUrlImmagine(url);
+        articolo.setUrlImmagine("images/" + url);
         if(getAutore.getAutoreFromId(idAutore) == null){
             Autore autore = new Autore();
             autore.setCodice(idAutore);
