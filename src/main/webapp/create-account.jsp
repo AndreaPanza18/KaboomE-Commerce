@@ -77,7 +77,7 @@
 
             <label>Password</label>
             <span id="passwordError" class="error-message"></span>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\[\]{};':&quot\\|,.<>\/?]).{8,}$" required>
         </div>
         <input type="submit" value="INVIA" class="btn">
     </form>

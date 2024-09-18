@@ -9,7 +9,7 @@
     <title>Grazie per aver acquisato!</title>
     <link rel="stylesheet" href="CSS/nav-style.css">
     <link rel="stylesheet" href="CSS/categories-style.css">
-    <link rel="stylesheet", href="CSS/acquisto-style.css">
+    <link rel="stylesheet" href="CSS/acquisto-style.css">
     <script src="JS/search.js" defer></script>
     <script src="JS/navbar.js" defer></script>
     <script type="text/javascript">

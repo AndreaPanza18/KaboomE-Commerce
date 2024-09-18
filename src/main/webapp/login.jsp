@@ -72,7 +72,7 @@
             <label>Email</label>
             <input type="email" class="form-control" name="email" pattern="/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" required autofocus>
             <label>Password</label>
-            <input type="password" class="form-control" name="password" required>
+            <input type="password" class="form-control" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\[\]{};':&quot\\|,.<>\/?]).{8,}$" required>
         </div>
         <input type="submit" value="LOGIN" class="btn">
     </form>
