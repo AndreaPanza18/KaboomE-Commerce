@@ -12,10 +12,10 @@ public class ConPool {
     public static Connection getConnection() throws SQLException {
         if (datasource == null) {
             PoolProperties p = new PoolProperties();
-            p.setUrl("jdbc:mysql://localhost:3306/Kaboom?serverTimezone=" + TimeZone.getDefault().getID());
+            p.setUrl("jdbc:mysql://kb-db.cxa2q6eq2hu4.eu-north-1.rds.amazonaws.com:3306/KABOOM?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            p.setUsername("root");
-            p.setPassword("obi98");
+            p.setUsername("admin");
+            p.setPassword("-TSWKaboom-");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);

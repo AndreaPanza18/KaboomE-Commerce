@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="kaboom@localhost" uuid="86bb9772-a9a9-4ffb-a5a0-5edb0b534dc5">
+    <data-source source="LOCAL" name="KB-DB" uuid="68d18880-cd68-44c2-95a3-6cb58b9a0f95">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/kaboom</jdbc-url>
+      <jdbc-url>jdbc:mysql://kb-db.cxa2q6eq2hu4.eu-north-1.rds.amazonaws.com:3306</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
